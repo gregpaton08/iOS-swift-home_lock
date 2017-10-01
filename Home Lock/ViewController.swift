@@ -34,6 +34,9 @@ class ViewController: UIViewController {
                 self.refreshStatus()
             }
         }
+        
+        sender.setTitle(sender.title(for: .normal)! + "ing...", for: .normal)
+        
         task.resume()
     }
     
@@ -52,7 +55,7 @@ class ViewController: UIViewController {
                 lockStatus = dictionary["status"] as? Bool
             }
             DispatchQueue.main.async {
-                self.lockButton.titleLabel?.text = lockStatus! ? "Unlock" : "Lock"
+                self.lockButton.setTitle(lockStatus! ? "Unlock" : "Lock", for: .normal)
             }
         }
         task.resume()
