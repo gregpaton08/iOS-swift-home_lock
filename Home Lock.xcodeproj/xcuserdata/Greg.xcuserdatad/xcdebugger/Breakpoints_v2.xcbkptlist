@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Home Lock/ViewController.swift"
-            timestampString = "528567122.78157"
+            timestampString = "528567461.524704"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "25"
-            endingLineNumber = "25"
+            startingLineNumber = "24"
+            endingLineNumber = "24"
             landmarkName = "lockButtonPress(_:)"
             landmarkType = "7">
          </BreakpointContent>

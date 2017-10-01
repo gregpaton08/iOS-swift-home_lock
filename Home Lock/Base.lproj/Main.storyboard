@@ -21,18 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TBu-G2-Ck5">
-                                <rect key="frame" x="166" y="211" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pva-Wu-skA">
-                                <rect key="frame" x="157" y="283" width="60" height="30"/>
+                                <rect key="frame" x="72" y="194" width="230" height="46"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="60" id="vBy-ah-rFa"/>
+                                    <constraint firstAttribute="width" constant="230" id="vBy-ah-rFa"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <state key="normal" title="Loading..."/>
                                 <connections>
                                     <action selector="lockButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gfD-sL-Rkt"/>
                                 </connections>
@@ -40,19 +35,18 @@
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Pva-Wu-skA" firstAttribute="top" secondItem="TBu-G2-Ck5" secondAttribute="bottom" constant="51" id="3O7-bI-qNd"/>
-                            <constraint firstItem="TBu-G2-Ck5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="191" id="5HC-gv-RuQ"/>
-                            <constraint firstItem="TBu-G2-Ck5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z0W-GU-0Yy"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Pva-Wu-skA" secondAttribute="bottom" constant="427" id="7sl-U8-fPy"/>
+                            <constraint firstItem="Pva-Wu-skA" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="174" id="AFl-4y-cwq"/>
                             <constraint firstItem="Pva-Wu-skA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hLA-09-yZ1"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="lockButton" destination="Pva-Wu-skA" id="fQZ-Vf-TeB"/>
-                        <outlet property="statusLabel" destination="TBu-G2-Ck5" id="hqB-zU-HBd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="36" y="37.331334332833585"/>
         </scene>
     </scenes>
 </document>

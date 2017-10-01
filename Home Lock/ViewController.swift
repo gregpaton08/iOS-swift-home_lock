@@ -10,7 +10,6 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var lockButton: UIButton!
     
     @IBAction func lockButtonPress(_ sender: UIButton) {
@@ -53,7 +52,6 @@ class ViewController: UIViewController {
                 lockStatus = dictionary["status"] as? Bool
             }
             DispatchQueue.main.async {
-                self.statusLabel.text = lockStatus! ? "Locked" : "Unlocked"
                 self.lockButton.titleLabel?.text = lockStatus! ? "Unlock" : "Lock"
             }
         }
