@@ -27,15 +27,27 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pva-Wu-skA">
+                                <rect key="frame" x="157" y="283" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="vBy-ah-rFa"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <connections>
+                                    <action selector="lockButtonPress:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gfD-sL-Rkt"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Pva-Wu-skA" firstAttribute="top" secondItem="TBu-G2-Ck5" secondAttribute="bottom" constant="51" id="3O7-bI-qNd"/>
                             <constraint firstItem="TBu-G2-Ck5" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="191" id="5HC-gv-RuQ"/>
                             <constraint firstItem="TBu-G2-Ck5" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Z0W-GU-0Yy"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="TBu-G2-Ck5" secondAttribute="bottom" constant="435" id="o06-jH-Ogc"/>
+                            <constraint firstItem="Pva-Wu-skA" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hLA-09-yZ1"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lockButton" destination="Pva-Wu-skA" id="fQZ-Vf-TeB"/>
                         <outlet property="statusLabel" destination="TBu-G2-Ck5" id="hqB-zU-HBd"/>
                     </connections>
                 </viewController>

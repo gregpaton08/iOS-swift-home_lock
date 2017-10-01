@@ -11,6 +11,21 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var lockButton: UIButton!
+    
+    @IBAction func lockButtonPress(_ sender: UIButton) {
+        var request = URLRequest(url: URL(string: "http://192.168.1.168:5555/api/v1/lock_status")!)
+        request.httpMethod = "PUT"
+        let jsonData = "{\"status\":false}".data(using: String.Encoding.utf8)
+        request.httpBody = jsonData
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.setValue(String(describing: jsonData?.count), forHTTPHeaderField: "Content-Length")
+        
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
+        }
+        task.resume()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +41,7 @@ class ViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 self.statusLabel.text = lockStatus! ? "Locked" : "Unlocked"
+                self.lockButton.titleLabel?.text = lockStatus! ? "Unlock" : "Lock"
             }
         }
         task.resume()
