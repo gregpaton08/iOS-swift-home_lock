@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lockButton: UIButton!
     
     @IBAction func lockButtonPress(_ sender: UIButton) {
-        var request = URLRequest(url: URL(string: "http://192.168.1.168:5555/api/v1/lock_status")!)
+        var request = URLRequest(url: getLockStatusUrl()!)
         request.httpMethod = "PUT"
         let jsonData = "{\"status\":false}".data(using: String.Encoding.utf8)
         request.httpBody = jsonData
@@ -27,13 +27,18 @@ class ViewController: UIViewController {
         task.resume()
     }
     
+    private let serverAddress = "192.168.1.168"
+    private let serverPort = "5555"
+    
+    private func getLockStatusUrl() -> URL? {
+        return URL(string: "http://" + serverAddress + ":" + serverPort + "/api/v1/lock_status")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         
-        let url = URL(string: "http://192.168.1.168:5555/api/v1/lock_status")
-        
-        let task = URLSession.shared.dataTask(with: url!) { (data, response, error) in
+        let task = URLSession.shared.dataTask(with: getLockStatusUrl()!) { (data, response, error) in
             let json = try? JSONSerialization.jsonObject(with: data!, options: [])
             var lockStatus: Bool?
             if let dictionary = json as? [String: Any] {
