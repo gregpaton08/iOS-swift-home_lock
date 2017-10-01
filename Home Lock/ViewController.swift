@@ -14,15 +14,26 @@ class ViewController: UIViewController {
     @IBOutlet weak var lockButton: UIButton!
     
     @IBAction func lockButtonPress(_ sender: UIButton) {
+        let dataString: String?
+        switch sender.titleLabel?.text ?? "" {
+        case "Lock":
+            dataString = "{\"status\":true}"
+        default:
+            dataString = "{\"status\":false}"
+        }
+        
         var request = URLRequest(url: getLockStatusUrl()!)
         request.httpMethod = "PUT"
-        let jsonData = "{\"status\":false}".data(using: String.Encoding.utf8)
+        let jsonData = dataString!.data(using: String.Encoding.utf8)
         request.httpBody = jsonData
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue(String(describing: jsonData?.count), forHTTPHeaderField: "Content-Length")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            print(NSString(data: data!, encoding: String.Encoding.utf8.rawValue))
+            // TODO: handle error cases.
+            DispatchQueue.main.async {
+                self.refreshStatus()
+            }
         }
         task.resume()
     }
@@ -34,10 +45,7 @@ class ViewController: UIViewController {
         return URL(string: "http://" + serverAddress + ":" + serverPort + "/api/v1/lock_status")
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        
+    private func refreshStatus() {
         let task = URLSession.shared.dataTask(with: getLockStatusUrl()!) { (data, response, error) in
             let json = try? JSONSerialization.jsonObject(with: data!, options: [])
             var lockStatus: Bool?
@@ -50,6 +58,13 @@ class ViewController: UIViewController {
             }
         }
         task.resume()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+        
+        refreshStatus()
     }
 
     override func didReceiveMemoryWarning() {
