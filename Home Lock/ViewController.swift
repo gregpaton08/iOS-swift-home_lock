@@ -10,8 +10,8 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var serverAddress = "192.168.1.168"
-    var serverPort = "5555"
+    var serverAddress = ""
+    var serverPort = ""
 
     @IBOutlet weak var lockButton: UIButton!
     
@@ -26,8 +26,13 @@ class ViewController: UIViewController {
             return
         }
         
+        sender.setTitle(sender.title(for: .normal)! + "ing...", for: .normal)
+        
+        // Create a PUT request.
         var request = URLRequest(url: getLockStatusUrl()!)
         request.httpMethod = "PUT"
+        
+        // Add the JSON data to the request.
         let jsonData = dataString!.data(using: String.Encoding.utf8)
         request.httpBody = jsonData
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -40,11 +45,12 @@ class ViewController: UIViewController {
             }
         }
         
-        sender.setTitle(sender.title(for: .normal)! + "ing...", for: .normal)
-        
         task.resume()
     }
     
+    private var lockStatusGetDataTask: URLSessionDataTask?
+    
+    /// Load user settings from UserDefaults.
     private func loadSettings() {
         let defaults = UserDefaults.standard
         if let address = defaults.object(forKey: AppSettings.SettingKeys.address.rawValue) as? String, address.characters.count > 0, let port = defaults.object(forKey: AppSettings.SettingKeys.port.rawValue) as? String, port.characters.count > 0 {
@@ -59,8 +65,14 @@ class ViewController: UIViewController {
         return URL(string: "http://" + serverAddress + ":" + serverPort + "/api/v1/lock_status")
     }
     
+    /// Refresh the lock status.
     private func refreshStatus() {
-        let task = URLSession.shared.dataTask(with: getLockStatusUrl()!) { (data, response, error) in
+        // If the request is already in progress then don't request again.
+        if lockStatusGetDataTask?.state == .running {
+            return
+        }
+        
+        lockStatusGetDataTask = URLSession.shared.dataTask(with: getLockStatusUrl()!) { (data, response, error) in
             if error == nil {
                 let json = try? JSONSerialization.jsonObject(with: data!, options: [])
                 var lockStatus: Bool?
@@ -77,7 +89,8 @@ class ViewController: UIViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
         }
-        task.resume()
+        
+        lockStatusGetDataTask?.resume()
     }
     
     override func viewDidLoad() {
@@ -99,6 +112,13 @@ class ViewController: UIViewController {
         loadSettings()
         
         refreshStatus()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        // If a lock status GET request is in progress cancel it when exiting the view.
+        if lockStatusGetDataTask?.state == .running {
+            lockStatusGetDataTask?.cancel()
+        }
     }
 
     override func didReceiveMemoryWarning() {
