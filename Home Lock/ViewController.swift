@@ -16,36 +16,42 @@ class ViewController: UIViewController {
     @IBOutlet weak var lockButton: UIButton!
     
     @IBAction func lockButtonPress(_ sender: UIButton) {
-        let dataString: String?
+        let lockStatus: Bool?
         switch sender.titleLabel?.text ?? "" {
         case "Lock":
-            dataString = "{\"status\":true}"
+            lockStatus = true
         case "Unlock":
-            dataString = "{\"status\":false}"
+            lockStatus = false
         default:
             return
         }
         
         sender.setTitle(sender.title(for: .normal)! + "ing...", for: .normal)
         
-        // Create a PUT request.
-        var request = URLRequest(url: getLockStatusUrl()!)
-        request.httpMethod = "PUT"
+//        // Create a PUT request.
+//        var request = URLRequest(url: getLockStatusUrl()!)
+//        request.httpMethod = "PUT"
+//        
+//        // Add the JSON data to the request.
+//        let jsonData = dataString!.data(using: String.Encoding.utf8)
+//        request.httpBody = jsonData
+//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+//        request.setValue(String(describing: jsonData?.count), forHTTPHeaderField: "Content-Length")
+//        
+//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+//            // TODO: handle error cases.
+//            DispatchQueue.main.async {
+//                self.refreshStatus()
+//            }
+//        }
+//        
+//        task.resume()
         
-        // Add the JSON data to the request.
-        let jsonData = dataString!.data(using: String.Encoding.utf8)
-        request.httpBody = jsonData
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue(String(describing: jsonData?.count), forHTTPHeaderField: "Content-Length")
-        
-        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            // TODO: handle error cases.
+        homeLock.lockDoor(lockStatus!) {
             DispatchQueue.main.async {
                 self.refreshStatus()
             }
         }
-        
-        task.resume()
     }
     
     private let homeLock = HomeLock()
@@ -68,30 +74,6 @@ class ViewController: UIViewController {
     
     /// Refresh the lock status.
     private func refreshStatus() {
-//        // If the request is already in progress then don't request again.
-//        if lockStatusGetDataTask?.state == .running {
-//            return
-//        }
-//        
-//        lockStatusGetDataTask = URLSession.shared.dataTask(with: getLockStatusUrl()!) { (data, response, error) in
-//            if error == nil {
-//                let json = try? JSONSerialization.jsonObject(with: data!, options: [])
-//                var lockStatus: Bool?
-//                if let dictionary = json as? [String: Any] {
-//                    lockStatus = dictionary["status"] as? Bool
-//                }
-//                DispatchQueue.main.async {
-//                    self.lockButton.setTitle(lockStatus! ? "Unlock" : "Lock", for: .normal)
-//                }
-//            } else {
-//                let alertController = UIAlertController(title: "Error", message: "Could not connect to server", preferredStyle: .alert)
-//                let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-//                alertController.addAction(cancelAction)
-//                self.present(alertController, animated: true, completion: nil)
-//            }
-//        }
-//        
-//        lockStatusGetDataTask?.resume()
         homeLock.getStatus() { (status, error) in
             if status != nil {
                 DispatchQueue.main.async {
