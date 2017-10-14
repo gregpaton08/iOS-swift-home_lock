@@ -8,6 +8,7 @@
 
 import UIKit
 import NotificationCenter
+import HomeLockControl
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         

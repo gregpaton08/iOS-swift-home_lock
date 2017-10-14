@@ -20,7 +20,9 @@
 		3760300D1F9259E3003C91DB /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 376030001F9259E3003C91DB /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		376030131F9260E1003C91DB /* HomeLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030121F9260E1003C91DB /* HomeLock.swift */; };
 		376030151F9260FE003C91DB /* HLRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030141F9260FE003C91DB /* HLRequests.swift */; };
-		376030171F926873003C91DB /* HomeLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030161F926873003C91DB /* HomeLock.swift */; };
+		376030411F928DFD003C91DB /* HomeLockControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3760303A1F928CB1003C91DB /* HomeLockControl.framework */; };
+		376030421F928E28003C91DB /* HomeLockControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3760303A1F928CB1003C91DB /* HomeLockControl.framework */; };
+		376030441F929134003C91DB /* HomeLockControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3760303A1F928CB1003C91DB /* HomeLockControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,6 +32,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 37602FFF1F9259E3003C91DB;
 			remoteInfo = Widget;
+		};
+		376030391F928CB1003C91DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 376030351F928CB1003C91DB /* HomeLockControl.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 376030221F927F57003C91DB;
+			remoteInfo = HomeLockControl;
+		};
+		376030451F929134003C91DB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 376030351F928CB1003C91DB /* HomeLockControl.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 376030211F927F57003C91DB;
+			remoteInfo = HomeLockControl;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -43,6 +59,17 @@
 				3760300D1F9259E3003C91DB /* Widget.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		376030471F929134003C91DB /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				376030441F929134003C91DB /* HomeLockControl.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -64,7 +91,7 @@
 		3760300A1F9259E3003C91DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		376030121F9260E1003C91DB /* HomeLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLock.swift; sourceTree = "<group>"; };
 		376030141F9260FE003C91DB /* HLRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLRequests.swift; sourceTree = "<group>"; };
-		376030161F926873003C91DB /* HomeLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLock.swift; sourceTree = "<group>"; };
+		376030351F928CB1003C91DB /* HomeLockControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HomeLockControl.xcodeproj; path = ../HomeLockControl/HomeLockControl.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +99,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376030421F928E28003C91DB /* HomeLockControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +107,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376030411F928DFD003C91DB /* HomeLockControl.framework in Frameworks */,
 				376030031F9259E3003C91DB /* NotificationCenter.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -89,6 +118,7 @@
 		375FF76F1F813EDE00E1A856 = {
 			isa = PBXGroup;
 			children = (
+				376030351F928CB1003C91DB /* HomeLockControl.xcodeproj */,
 				375FF77A1F813EDE00E1A856 /* Home Lock */,
 				376030041F9259E3003C91DB /* Widget */,
 				376030011F9259E3003C91DB /* Frameworks */,
@@ -136,9 +166,16 @@
 				376030051F9259E3003C91DB /* TodayViewController.swift */,
 				376030071F9259E3003C91DB /* MainInterface.storyboard */,
 				3760300A1F9259E3003C91DB /* Info.plist */,
-				376030161F926873003C91DB /* HomeLock.swift */,
 			);
 			path = Widget;
+			sourceTree = "<group>";
+		};
+		376030361F928CB1003C91DB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3760303A1F928CB1003C91DB /* HomeLockControl.framework */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -152,11 +189,13 @@
 				375FF7751F813EDE00E1A856 /* Frameworks */,
 				375FF7761F813EDE00E1A856 /* Resources */,
 				376030111F9259E3003C91DB /* Embed App Extensions */,
+				376030471F929134003C91DB /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				3760300C1F9259E3003C91DB /* PBXTargetDependency */,
+				376030461F929134003C91DB /* PBXTargetDependency */,
 			);
 			name = "Home Lock";
 			productName = "Home Lock";
@@ -213,6 +252,12 @@
 			mainGroup = 375FF76F1F813EDE00E1A856;
 			productRefGroup = 375FF7791F813EDE00E1A856 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 376030361F928CB1003C91DB /* Products */;
+					ProjectRef = 376030351F928CB1003C91DB /* HomeLockControl.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				375FF7771F813EDE00E1A856 /* Home Lock */,
@@ -220,6 +265,16 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		3760303A1F928CB1003C91DB /* HomeLockControl.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = HomeLockControl.framework;
+			remoteRef = 376030391F928CB1003C91DB /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		375FF7761F813EDE00E1A856 /* Resources */ = {
@@ -261,7 +316,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				376030061F9259E3003C91DB /* TodayViewController.swift in Sources */,
-				376030171F926873003C91DB /* HomeLock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +326,11 @@
 			isa = PBXTargetDependency;
 			target = 37602FFF1F9259E3003C91DB /* Widget */;
 			targetProxy = 3760300B1F9259E3003C91DB /* PBXContainerItemProxy */;
+		};
+		376030461F929134003C91DB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = HomeLockControl;
+			targetProxy = 376030451F929134003C91DB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -307,6 +366,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -358,6 +418,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				APPLICATION_EXTENSION_API_ONLY = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -480,6 +541,7 @@
 				3760300F1F9259E3003C91DB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
