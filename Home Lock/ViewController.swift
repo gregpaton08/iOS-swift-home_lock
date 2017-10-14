@@ -41,8 +41,7 @@ class ViewController: UIViewController {
     
     /// Load user settings from UserDefaults.
     private func loadSettings() {
-        let defaults = UserDefaults.standard
-        if let address = defaults.object(forKey: AppSettings.SettingKeys.address.rawValue) as? String, address.characters.count > 0, let port = defaults.object(forKey: AppSettings.SettingKeys.port.rawValue) as? String, port.characters.count > 0 {
+        if let address = AppSettings.getSetting(.address) as? String, address.characters.count > 0, let port = AppSettings.getSetting(.port) as? String, port.characters.count > 0 {
             serverAddress = address
             serverPort = port
         } else {
