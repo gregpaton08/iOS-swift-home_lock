@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		376030271F927F57003C91DB /* HomeLockControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 376030251F927F57003C91DB /* HomeLockControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3760302E1F9280C0003C91DB /* HomeLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3760302D1F9280C0003C91DB /* HomeLock.swift */; };
+		376030531F92A0C0003C91DB /* HLSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030521F92A0C0003C91DB /* HLSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -16,6 +17,7 @@
 		376030251F927F57003C91DB /* HomeLockControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeLockControl.h; sourceTree = "<group>"; };
 		376030261F927F57003C91DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3760302D1F9280C0003C91DB /* HomeLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLock.swift; sourceTree = "<group>"; };
+		376030521F92A0C0003C91DB /* HLSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +53,7 @@
 				3760302D1F9280C0003C91DB /* HomeLock.swift */,
 				376030251F927F57003C91DB /* HomeLockControl.h */,
 				376030261F927F57003C91DB /* Info.plist */,
+				376030521F92A0C0003C91DB /* HLSettings.swift */,
 			);
 			path = HomeLockControl;
 			sourceTree = "<group>";
@@ -136,6 +139,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				376030531F92A0C0003C91DB /* HLSettings.swift in Sources */,
 				3760302E1F9280C0003C91DB /* HomeLock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

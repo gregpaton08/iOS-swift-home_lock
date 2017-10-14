@@ -38,7 +38,7 @@ class ViewController: UIViewController {
     
     /// Load user settings from UserDefaults.
     private func loadSettings() {
-        if let address = AppSettings.getSetting(.address) as? String, address.characters.count > 0, let port = AppSettings.getSetting(.port) as? String, port.characters.count > 0 {
+        if let address = HLSettings.getSetting(.address) as? String, address.characters.count > 0, let port = HLSettings.getSetting(.port) as? String, port.characters.count > 0 {
             homeLock.serverAddress = address
             homeLock.serverPort = port
         } else {

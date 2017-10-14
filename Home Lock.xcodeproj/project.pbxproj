@@ -13,7 +13,6 @@
 		375FF7831F813EDE00E1A856 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 375FF7821F813EDE00E1A856 /* Assets.xcassets */; };
 		375FF7861F813EDE00E1A856 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 375FF7841F813EDE00E1A856 /* LaunchScreen.storyboard */; };
 		375FF78E1F8151EA00E1A856 /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FF78D1F8151EA00E1A856 /* SettingsTableViewController.swift */; };
-		375FF7901F8152DF00E1A856 /* AppSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375FF78F1F8152DF00E1A856 /* AppSettings.swift */; };
 		376030031F9259E3003C91DB /* NotificationCenter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376030021F9259E3003C91DB /* NotificationCenter.framework */; };
 		376030061F9259E3003C91DB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030051F9259E3003C91DB /* TodayViewController.swift */; };
 		376030091F9259E3003C91DB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 376030071F9259E3003C91DB /* MainInterface.storyboard */; };
@@ -81,7 +80,6 @@
 		375FF7851F813EDE00E1A856 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		375FF7871F813EDE00E1A856 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		375FF78D1F8151EA00E1A856 /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		375FF78F1F8152DF00E1A856 /* AppSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppSettings.swift; sourceTree = "<group>"; };
 		376030001F9259E3003C91DB /* Widget.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = Widget.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		376030021F9259E3003C91DB /* NotificationCenter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NotificationCenter.framework; path = System/Library/Frameworks/NotificationCenter.framework; sourceTree = SDKROOT; };
 		376030051F9259E3003C91DB /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
@@ -89,6 +87,8 @@
 		3760300A1F9259E3003C91DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		376030141F9260FE003C91DB /* HLRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLRequests.swift; sourceTree = "<group>"; };
 		376030481F9291DB003C91DB /* HomeLockControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HomeLockControl.xcodeproj; path = HomeLockControl/HomeLockControl.xcodeproj; sourceTree = "<group>"; };
+		376030541F92A820003C91DB /* Home Lock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Home Lock.entitlements"; sourceTree = "<group>"; };
+		376030551F92A8CB003C91DB /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +134,7 @@
 		375FF77A1F813EDE00E1A856 /* Home Lock */ = {
 			isa = PBXGroup;
 			children = (
+				376030541F92A820003C91DB /* Home Lock.entitlements */,
 				375FF77B1F813EDE00E1A856 /* AppDelegate.swift */,
 				375FF77D1F813EDE00E1A856 /* ViewController.swift */,
 				375FF77F1F813EDE00E1A856 /* Main.storyboard */,
@@ -141,7 +142,6 @@
 				375FF7841F813EDE00E1A856 /* LaunchScreen.storyboard */,
 				375FF7871F813EDE00E1A856 /* Info.plist */,
 				375FF78D1F8151EA00E1A856 /* SettingsTableViewController.swift */,
-				375FF78F1F8152DF00E1A856 /* AppSettings.swift */,
 				376030141F9260FE003C91DB /* HLRequests.swift */,
 			);
 			path = "Home Lock";
@@ -158,6 +158,7 @@
 		376030041F9259E3003C91DB /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				376030551F92A8CB003C91DB /* Widget.entitlements */,
 				376030051F9259E3003C91DB /* TodayViewController.swift */,
 				376030071F9259E3003C91DB /* MainInterface.storyboard */,
 				3760300A1F9259E3003C91DB /* Info.plist */,
@@ -228,11 +229,21 @@
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 4UDF68884M;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					37602FFF1F9259E3003C91DB = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = 4UDF68884M;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -300,7 +311,6 @@
 				375FF77E1F813EDE00E1A856 /* ViewController.swift in Sources */,
 				376030151F9260FE003C91DB /* HLRequests.swift in Sources */,
 				375FF77C1F813EDE00E1A856 /* AppDelegate.swift in Sources */,
-				375FF7901F8152DF00E1A856 /* AppSettings.swift in Sources */,
 				375FF78E1F8151EA00E1A856 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -458,6 +468,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Home Lock/Home Lock.entitlements";
 				DEVELOPMENT_TEAM = 4UDF68884M;
 				INFOPLIST_FILE = "Home Lock/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -472,6 +483,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Home Lock/Home Lock.entitlements";
 				DEVELOPMENT_TEAM = 4UDF68884M;
 				INFOPLIST_FILE = "Home Lock/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -484,6 +496,7 @@
 		3760300E1F9259E3003C91DB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
 				DEVELOPMENT_TEAM = 4UDF68884M;
 				INFOPLIST_FILE = Widget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
@@ -497,6 +510,7 @@
 		3760300F1F9259E3003C91DB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = Widget/Widget.entitlements;
 				DEVELOPMENT_TEAM = 4UDF68884M;
 				INFOPLIST_FILE = Widget/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";

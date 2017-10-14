@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HomeLockControl
 
 class SettingsTableViewController: UITableViewController {
 
@@ -22,7 +23,7 @@ class SettingsTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        if let address = AppSettings.getSetting(.address) as? String, let port = AppSettings.getSetting(.port) as? String {
+        if let address = HLSettings.getSetting(.address) as? String, let port = HLSettings.getSetting(.port) as? String {
             addressTextField.text = address
             portTextField.text = port
         }
@@ -36,8 +37,8 @@ class SettingsTableViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        let _ = AppSettings.setSetting(addressTextField.text!, forKey: .address)
-        let _ = AppSettings.setSetting(portTextField!, forKey: .port)
+        let _ = HLSettings.setSetting(addressTextField.text!, forKey: .address)
+        let _ = HLSettings.setSetting(portTextField.text!, forKey: .port)
     }
 
 }

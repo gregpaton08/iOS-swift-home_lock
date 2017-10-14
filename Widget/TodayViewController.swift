@@ -42,7 +42,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         // Do any additional setup after loading the view from its nib.
         
         doorLockSwitch.isEnabled = false
-        refreshStatus()
+        
+        if let address = HLSettings.getSetting(.address) as? String, let port = HLSettings.getSetting(.port) as? String {
+            homeLock.serverAddress = address
+            homeLock.serverPort = port
+            
+            print("GOT SETTINGSSSS")
+            refreshStatus()
+        } else {
+            print("no settings :(")
+        }
     }
     
     override func didReceiveMemoryWarning() {
