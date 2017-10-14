@@ -88,12 +88,5 @@ class ViewController: UIViewController {
         // If a lock status GET request is in progress cancel it when exiting the view.
         homeLock.cancelStatusRequest()
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-
 }
 
