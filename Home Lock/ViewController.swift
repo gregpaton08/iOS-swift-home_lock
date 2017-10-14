@@ -35,7 +35,6 @@ class ViewController: UIViewController {
     }
     
     private let homeLock = HomeLock()
-    private var lockStatusGetDataTask: URLSessionDataTask?
     
     /// Load user settings from UserDefaults.
     private func loadSettings() {
@@ -75,14 +74,6 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
-        
-        let config = URLSession.shared.configuration
-        config.timeoutIntervalForRequest = 10
-        config.timeoutIntervalForResource = 10
-        
-        loadSettings()
-        
-        refreshStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -95,9 +86,7 @@ class ViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         // If a lock status GET request is in progress cancel it when exiting the view.
-        if lockStatusGetDataTask?.state == .running {
-            lockStatusGetDataTask?.cancel()
-        }
+        homeLock.cancelStatusRequest()
     }
 
     override func didReceiveMemoryWarning() {

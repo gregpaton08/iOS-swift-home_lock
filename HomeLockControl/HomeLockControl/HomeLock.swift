@@ -17,6 +17,16 @@ public class HomeLock {
         
     }
     
+    public var statusRequestState: URLSessionTask.State {
+        get {
+            return lockStatusGetDataTask?.state ?? .completed
+        }
+    }
+    
+    public func cancelStatusRequest() {
+        lockStatusGetDataTask?.cancel()
+    }
+    
     private let lockStatusSession: URLSession = {
         let config = URLSessionConfiguration.default
         config.timeoutIntervalForRequest = 3
