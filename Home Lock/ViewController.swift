@@ -37,13 +37,13 @@ class ViewController: UIViewController {
     private let homeLock = HomeLock()
     
     /// Load user settings from UserDefaults.
-    private func loadSettings() {
+    private func loadSettings() -> Bool {
         if let address = HLSettings.getSetting(.address) as? String, address.characters.count > 0, let port = HLSettings.getSetting(.port) as? String, port.characters.count > 0 {
             homeLock.serverAddress = address
             homeLock.serverPort = port
-        } else {
-            performSegue(withIdentifier: "showSettings", sender: self)
+            return true
         }
+        return false
     }
     
     /// Refresh the lock status.
@@ -79,7 +79,10 @@ class ViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        loadSettings()
+        // If the settings fail to load then segue to the settings page.
+        if !loadSettings() {
+            performSegue(withIdentifier: "showSettings", sender: self)
+        }
         
         refreshStatus()
     }
