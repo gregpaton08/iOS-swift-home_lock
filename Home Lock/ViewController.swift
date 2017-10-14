@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lockButton: UIButton!
     
     @IBAction func lockButtonPress(_ sender: UIButton) {
+//        sender.isEnabled = false
         let lockStatus: Bool?
         switch sender.titleLabel?.text ?? "" {
         case "Lock":
@@ -64,9 +65,15 @@ class ViewController: UIViewController {
         }
     }
     
+    func applicationDidBecomeActive() {
+        refreshStatus()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
         
         let config = URLSession.shared.configuration
         config.timeoutIntervalForRequest = 10
