@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var lockButton: UIButton!
     
     @IBAction func lockButtonPress(_ sender: UIButton) {
-//        sender.isEnabled = false
+        sender.isEnabled = false
         let lockStatus: Bool?
         switch sender.titleLabel?.text ?? "" {
         case "Lock":
@@ -52,6 +52,7 @@ class ViewController: UIViewController {
         homeLock.getStatus() { (status, error) in
             if status != nil {
                 DispatchQueue.main.async {
+                    self.lockButton.isEnabled = true
                     self.lockButton.setTitle(status! ? "Unlock" : "Lock", for: .normal)
                 }
             } else {
