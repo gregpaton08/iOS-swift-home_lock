@@ -27,7 +27,13 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     private func refreshStatus() {
         homeLock.getStatus() { (status, error) in
             DispatchQueue.main.async {
-                self.doorLockSwitch.setOn(status!, animated: true)
+                print("refresh status \(status)")
+                if let lockStatus = status {
+                    self.doorLockSwitch.isEnabled = true
+                    self.doorLockSwitch.setOn(lockStatus, animated: true)
+                } else {
+                    self.doorLockSwitch.isEnabled = false
+                }
             }
         }
     }
@@ -36,6 +42,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
         
+        doorLockSwitch.isEnabled = false
         refreshStatus()
     }
     

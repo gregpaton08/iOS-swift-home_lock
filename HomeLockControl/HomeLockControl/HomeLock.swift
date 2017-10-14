@@ -17,6 +17,11 @@ public class HomeLock {
         
     }
     
+    private let lockStatusSession: URLSession = {
+        let config = URLSessionConfiguration.default
+        config.timeoutIntervalForRequest = 3
+        return URLSession.init(configuration: config)
+    }()
     private var lockStatusGetDataTask: URLSessionDataTask?
     
     private func getLockStatusUrl() -> URL? {
@@ -29,7 +34,7 @@ public class HomeLock {
             return
         }
         
-        lockStatusGetDataTask = URLSession.shared.dataTask(with: getLockStatusUrl()!) { (data, response, error) in
+        lockStatusGetDataTask = lockStatusSession.dataTask(with: getLockStatusUrl()!) { (data, response, error) in
             var lockStatus: Bool?
             if error == nil {
                 let json = try? JSONSerialization.jsonObject(with: data!, options: [])
@@ -49,6 +54,7 @@ public class HomeLock {
         // Create a PUT request.
         var request = URLRequest(url: getLockStatusUrl()!)
         request.httpMethod = "PUT"
+        request.timeoutInterval = 3.0
         
         // Add the JSON data to the request.
         let jsonData = dataString.data(using: String.Encoding.utf8)
@@ -57,10 +63,6 @@ public class HomeLock {
         request.setValue(String(describing: jsonData?.count), forHTTPHeaderField: "Content-Length")
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-            // TODO: handle error cases.
-//            DispatchQueue.main.async {
-//                self.refreshStatus()
-//            }
             completionHandler()
         }
         
