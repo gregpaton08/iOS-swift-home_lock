@@ -28,25 +28,6 @@ class ViewController: UIViewController {
         
         sender.setTitle(sender.title(for: .normal)! + "ing...", for: .normal)
         
-//        // Create a PUT request.
-//        var request = URLRequest(url: getLockStatusUrl()!)
-//        request.httpMethod = "PUT"
-//        
-//        // Add the JSON data to the request.
-//        let jsonData = dataString!.data(using: String.Encoding.utf8)
-//        request.httpBody = jsonData
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-//        request.setValue(String(describing: jsonData?.count), forHTTPHeaderField: "Content-Length")
-//        
-//        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-//            // TODO: handle error cases.
-//            DispatchQueue.main.async {
-//                self.refreshStatus()
-//            }
-//        }
-//        
-//        task.resume()
-        
         homeLock.lockDoor(lockStatus!) {
             DispatchQueue.main.async {
                 self.refreshStatus()

@@ -10,27 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Home Lock/ViewController.swift"
-            timestampString = "528783531.255412"
+            timestampString = "529688730.152844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "32"
-            endingLineNumber = "32"
-            landmarkName = "lockButtonPress(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Home Lock/ViewController.swift"
-            timestampString = "529688431.24264"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "62"
-            endingLineNumber = "62"
+            startingLineNumber = "43"
+            endingLineNumber = "43"
             landmarkName = "loadSettings()"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Home Lock/ViewController.swift"
-            timestampString = "529688431.24264"
+            timestampString = "529688730.152844"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "108"
-            endingLineNumber = "108"
+            startingLineNumber = "89"
+            endingLineNumber = "89"
             landmarkName = "viewWillAppear(_:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -73,46 +57,14 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Home Lock/ViewController.swift"
-            timestampString = "528783531.255412"
+            filePath = "Widget/TodayViewController.swift"
+            timestampString = "529689258.210838"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "42"
-            endingLineNumber = "42"
-            landmarkName = "lockButtonPress(_:)"
+            startingLineNumber = "18"
+            endingLineNumber = "18"
+            landmarkName = "doorLockSwitchPress(_:)"
             landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Home_Lock.ViewController.(lockButtonPress (__ObjC.UIButton) -&gt; ()).(closure #1)"
-                  moduleName = "Home Lock"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Greg/code/projects/Home%20Lock/Home%20Lock/ViewController.swift"
-                  timestampString = "528571971.133039"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "36"
-                  endingLineNumber = "36"
-                  offsetFromSymbolStart = "28">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Home_Lock.ViewController.(lockButtonPress (__ObjC.UIButton) -&gt; ()).(closure #1).(closure #1)"
-                  moduleName = "Home Lock"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/Greg/code/projects/Home%20Lock/Home%20Lock/ViewController.swift"
-                  timestampString = "528571971.135604"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "37"
-                  endingLineNumber = "37"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -11,9 +11,32 @@ import NotificationCenter
 
 class TodayViewController: UIViewController, NCWidgetProviding {
         
+    @IBOutlet weak var doorLockSwitch: UISwitch!
+    
+    @IBAction func doorLockSwitchPress(_ sender: UISwitch) {
+        print(sender.isOn)
+        homeLock.lockDoor(sender.isOn) {
+            DispatchQueue.main.async {
+                self.refreshStatus()
+            }
+        }
+    }
+    
+    private let homeLock = HomeLock()
+    
+    private func refreshStatus() {
+        homeLock.getStatus() { (status, error) in
+            DispatchQueue.main.async {
+                self.doorLockSwitch.setOn(status!, animated: true)
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view from its nib.
+        
+        refreshStatus()
     }
     
     override func didReceiveMemoryWarning() {

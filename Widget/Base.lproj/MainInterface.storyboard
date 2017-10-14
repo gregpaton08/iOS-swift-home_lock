@@ -23,6 +23,9 @@
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LuC-3t-sQz">
                                 <rect key="frame" x="136" y="3" width="51" height="31"/>
+                                <connections>
+                                    <action selector="doorLockSwitchPress:" destination="M4Y-Lb-cyx" eventType="valueChanged" id="S4K-OD-1g3"/>
+                                </connections>
                             </switch>
                         </subviews>
                         <constraints>
@@ -36,6 +39,9 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="37"/>
+                    <connections>
+                        <outlet property="doorLockSwitch" destination="LuC-3t-sQz" id="Hpd-1g-hDH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
