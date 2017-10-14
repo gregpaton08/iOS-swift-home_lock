@@ -10,8 +10,8 @@ import Foundation
 
 public class HomeLock {
     
-    var serverAddress = "192.168.1.168"
-    var serverPort = "5555"
+    public var serverAddress = "192.168.1.168"
+    public var serverPort = "5555"
     
     public init() {
         

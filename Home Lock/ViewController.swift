@@ -11,9 +11,6 @@ import HomeLockControl
 
 class ViewController: UIViewController {
 
-    var serverAddress = ""
-    var serverPort = ""
-
     @IBOutlet weak var lockButton: UIButton!
     
     @IBAction func lockButtonPress(_ sender: UIButton) {
@@ -42,15 +39,11 @@ class ViewController: UIViewController {
     /// Load user settings from UserDefaults.
     private func loadSettings() {
         if let address = AppSettings.getSetting(.address) as? String, address.characters.count > 0, let port = AppSettings.getSetting(.port) as? String, port.characters.count > 0 {
-            serverAddress = address
-            serverPort = port
+            homeLock.serverAddress = address
+            homeLock.serverPort = port
         } else {
             performSegue(withIdentifier: "showSettings", sender: self)
         }
-    }
-    
-    private func getLockStatusUrl() -> URL? {
-        return URL(string: "http://" + serverAddress + ":" + serverPort + "/api/v1/lock_status")
     }
     
     /// Refresh the lock status.
