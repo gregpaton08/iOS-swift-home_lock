@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HomeLockControl
 
 class ViewController: UIViewController {
 

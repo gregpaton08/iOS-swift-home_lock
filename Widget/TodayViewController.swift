@@ -15,7 +15,6 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     @IBOutlet weak var doorLockSwitch: UISwitch!
     
     @IBAction func doorLockSwitchPress(_ sender: UISwitch) {
-        print(sender.isOn)
         homeLock.lockDoor(sender.isOn) {
             DispatchQueue.main.async {
                 self.refreshStatus()

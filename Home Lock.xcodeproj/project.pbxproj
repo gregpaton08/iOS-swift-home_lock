@@ -18,7 +18,6 @@
 		376030061F9259E3003C91DB /* TodayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030051F9259E3003C91DB /* TodayViewController.swift */; };
 		376030091F9259E3003C91DB /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 376030071F9259E3003C91DB /* MainInterface.storyboard */; };
 		3760300D1F9259E3003C91DB /* Widget.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 376030001F9259E3003C91DB /* Widget.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		376030131F9260E1003C91DB /* HomeLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030121F9260E1003C91DB /* HomeLock.swift */; };
 		376030151F9260FE003C91DB /* HLRequests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030141F9260FE003C91DB /* HLRequests.swift */; };
 		3760304E1F929225003C91DB /* HomeLockControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3760304D1F9291DB003C91DB /* HomeLockControl.framework */; };
 		3760304F1F929225003C91DB /* HomeLockControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3760304D1F9291DB003C91DB /* HomeLockControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -88,7 +87,6 @@
 		376030051F9259E3003C91DB /* TodayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodayViewController.swift; sourceTree = "<group>"; };
 		376030081F9259E3003C91DB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		3760300A1F9259E3003C91DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		376030121F9260E1003C91DB /* HomeLock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeLock.swift; sourceTree = "<group>"; };
 		376030141F9260FE003C91DB /* HLRequests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HLRequests.swift; sourceTree = "<group>"; };
 		376030481F9291DB003C91DB /* HomeLockControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HomeLockControl.xcodeproj; path = HomeLockControl/HomeLockControl.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -144,7 +142,6 @@
 				375FF7871F813EDE00E1A856 /* Info.plist */,
 				375FF78D1F8151EA00E1A856 /* SettingsTableViewController.swift */,
 				375FF78F1F8152DF00E1A856 /* AppSettings.swift */,
-				376030121F9260E1003C91DB /* HomeLock.swift */,
 				376030141F9260FE003C91DB /* HLRequests.swift */,
 			);
 			path = "Home Lock";
@@ -304,7 +301,6 @@
 				376030151F9260FE003C91DB /* HLRequests.swift in Sources */,
 				375FF77C1F813EDE00E1A856 /* AppDelegate.swift in Sources */,
 				375FF7901F8152DF00E1A856 /* AppSettings.swift in Sources */,
-				376030131F9260E1003C91DB /* HomeLock.swift in Sources */,
 				375FF78E1F8151EA00E1A856 /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
