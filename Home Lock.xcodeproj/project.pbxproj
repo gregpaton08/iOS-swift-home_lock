@@ -20,6 +20,7 @@
 		3760304E1F929225003C91DB /* HomeLockControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3760304D1F9291DB003C91DB /* HomeLockControl.framework */; };
 		3760304F1F929225003C91DB /* HomeLockControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3760304D1F9291DB003C91DB /* HomeLockControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		376030561F92C506003C91DB /* HomeLockControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3760304D1F9291DB003C91DB /* HomeLockControl.framework */; };
+		37A241971FA0565A00DE70F8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A241961FA0565A00DE70F8 /* Reachability.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -88,6 +89,7 @@
 		376030481F9291DB003C91DB /* HomeLockControl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = HomeLockControl.xcodeproj; path = HomeLockControl/HomeLockControl.xcodeproj; sourceTree = "<group>"; };
 		376030541F92A820003C91DB /* Home Lock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Home Lock.entitlements"; sourceTree = "<group>"; };
 		376030551F92A8CB003C91DB /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
+		37A241961FA0565A00DE70F8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +160,7 @@
 			isa = PBXGroup;
 			children = (
 				376030551F92A8CB003C91DB /* Widget.entitlements */,
+				37A241961FA0565A00DE70F8 /* Reachability.swift */,
 				376030051F9259E3003C91DB /* TodayViewController.swift */,
 				376030071F9259E3003C91DB /* MainInterface.storyboard */,
 				3760300A1F9259E3003C91DB /* Info.plist */,
@@ -317,6 +320,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37A241971FA0565A00DE70F8 /* Reachability.swift in Sources */,
 				376030061F9259E3003C91DB /* TodayViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

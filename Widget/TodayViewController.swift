@@ -37,8 +37,16 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         }
     }
     
+    let reachability = Reachability()!
+    
+    func reachabilityChanged(note: Notification) {
+        refreshStatus()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
         
         doorLockSwitch.isEnabled = false
         
