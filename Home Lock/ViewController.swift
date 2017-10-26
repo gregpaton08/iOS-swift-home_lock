@@ -65,7 +65,7 @@ class ViewController: UIViewController {
         }
     }
     
-    func applicationDidBecomeActive() {
+    @objc func applicationDidBecomeActive() {
         refreshStatus()
     }
     

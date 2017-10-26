@@ -39,6 +39,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     
     let reachability = Reachability()!
     
+    @objc(reachabilityChangedWithNote:)
     func reachabilityChanged(note: Notification) {
         refreshStatus()
     }
