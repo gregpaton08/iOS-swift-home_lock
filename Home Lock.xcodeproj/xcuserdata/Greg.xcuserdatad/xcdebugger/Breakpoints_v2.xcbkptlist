@@ -26,45 +26,77 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Widget/TodayViewController.swift"
-            timestampString = "530746969.672823"
+            timestampString = "530747763.355481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "18"
             endingLineNumber = "18"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "doorLockSwitchPress(_:)"
+            landmarkType = "7">
             <Locations>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Widget.TodayViewController.doorLockSwitchPress (__ObjC.UISwitch) -&gt; ()"
+                  symbolName = "Widget.TodayViewController.doorLockSwitchPress(__ObjC.UISwitch) -&gt; ()"
                   moduleName = "Widget"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Greg/code/projects/Home%20Lock/Widget/TodayViewController.swift"
-                  timestampString = "529700021.419287"
+                  timestampString = "530747763.495659"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "18"
                   endingLineNumber = "18"
-                  offsetFromSymbolStart = "36">
+                  offsetFromSymbolStart = "40">
                </Location>
                <Location
                   shouldBeEnabled = "No"
                   ignoreCount = "0"
                   continueAfterRunningActions = "No"
-                  symbolName = "Widget.TodayViewController.(doorLockSwitchPress (__ObjC.UISwitch) -&gt; ()).(closure #1)"
+                  symbolName = "closure #1 () -&gt; () in Widget.TodayViewController.doorLockSwitchPress(__ObjC.UISwitch) -&gt; ()"
                   moduleName = "Widget"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/Greg/code/projects/Home%20Lock/Widget/TodayViewController.swift"
-                  timestampString = "529700021.42349"
+                  timestampString = "530747763.500478"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "19"
                   endingLineNumber = "19"
-                  offsetFromSymbolStart = "16">
+                  offsetFromSymbolStart = "20">
                </Location>
             </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Widget/TodayViewController.swift"
+            timestampString = "530747763.356007"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "reachabilityChanged(note:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Widget/TodayViewController.swift"
+            timestampString = "530747763.356386"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "51"
+            endingLineNumber = "51"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -48,6 +48,11 @@ class TodayViewController: UIViewController, NCWidgetProviding {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
+        do {
+            try reachability.startNotifier()
+        } catch {
+            print("Could not start reachability notifier...")
+        }
         
         doorLockSwitch.isEnabled = false
         
