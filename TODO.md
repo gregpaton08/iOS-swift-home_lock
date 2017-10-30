@@ -1,6 +1,8 @@
 # To Do  
 
 ## Tasks  
+* create framework for common code (HomeLock, requests, etc.)
+* create lock animation
 
 ## Completed Tasks  
 
