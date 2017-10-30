@@ -7,4 +7,4 @@
 ## Completed Tasks  
 
 ## Stretch Goals  
-[HomeKit integration](https://developer.apple.com/homekit/specification/) 
+* [HomeKit integration](https://developer.apple.com/homekit/specification/) 
