@@ -10,6 +10,8 @@ import UIKit
 
 @IBDesignable
 class LockView: UIView {
+    
+    public var isLocked = true
 
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
@@ -17,7 +19,7 @@ class LockView: UIView {
         UIColor.black.setFill()
         path.lineWidth = 1.0
         
-        let boundsCenter = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         
         // Find the largest size that will fit within the bounds given the aspect ratio.
         let lockViewAspectRatio = CGSize(width: 16.0, height: 10.0)
@@ -45,7 +47,12 @@ class LockView: UIView {
         path.stroke()
         
         // Draw the lock shackle.
-        let lockShackleCenter = CGPoint(x: center.x, y: center.y - pointsFrom(units: 2.5))
+        var lockShackleCenter: CGPoint
+        if isLocked {
+            lockShackleCenter = CGPoint(x: center.x, y: center.y - pointsFrom(units: 2.5))
+        } else {
+            lockShackleCenter = CGPoint(x: center.x + pointsFrom(units: 5), y: center.y - pointsFrom(units: 2.5))
+        }
         let lockShackleOuterEdgeRadius = pointsFrom(units: 2.5)
         let lockShackleOuterEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
         let lockShackleOuterEdgeEnd = CGPoint(x: lockShackleCenter.x + lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
