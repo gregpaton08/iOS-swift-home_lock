@@ -11,7 +11,7 @@ import UIKit
 @IBDesignable
 class LockView: UIView {
     
-    public var isLocked = true
+    public var isLocked = false
 
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
