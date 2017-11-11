@@ -9,7 +9,7 @@
 import UIKit
 import HomeLockControl
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, LockViewDelegate {
 
     @IBOutlet weak var lockButton: UIButton!
     
@@ -78,6 +78,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         NotificationCenter.default.addObserver(self, selector: #selector(applicationDidBecomeActive), name: .UIApplicationDidBecomeActive, object: nil)
+        
+        lockView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +96,12 @@ class ViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         // If a lock status GET request is in progress cancel it when exiting the view.
         homeLock.cancelStatusRequest()
+    }
+    
+    // MARK: - Lock View Delegate
+    
+    func handleTapFor(lockView: LockView) {
+        lockView.isLocked = !lockView.isLocked
     }
 }
 
