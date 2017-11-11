@@ -11,17 +11,20 @@ import UIKit
 @IBDesignable
 class LockView: UIView {
     
-    var _isLocked = true { didSet { setNeedsDisplay() } }
     public var isLocked: Bool {
         get {
-            return _isLocked
+            return lockShackleView.isLocked
         }
         set {
-            if newValue != _isLocked {
-                UIView.transition(with: self, duration: 1.0, options: [.transitionFlipFromTop], animations: {
-                    self._isLocked = newValue
-                }, completion: nil)
-            }
+            lockShackleView.frame.origin.x = lockViewRect.origin.x + (newValue ? 0 : pointsFrom(units: 4))
+//            lockShackleView.transform = lockShackleView.transform.scaledBy(x: 5, y: 5)
+//            lockShackleView.transform = lockShackleView.transform.rotated(by: CGFloat.pi)
+            lockShackleView.isLocked = newValue
+//            if newValue != lockShackleView.isLocked {
+//                UIView.transition(with: lockShackleView, duration: 1.0, options: [.transitionFlipFromRight], animations: {
+//                    self.lockShackleView.isLocked = newValue
+//                }, completion: nil)
+//            }
         }
     }
     
@@ -37,9 +40,15 @@ class LockView: UIView {
     private let lockViewAspectRatio = CGSize(width: 16.0, height: 10.0)
     private var lockViewRect = CGRect()
     
+    // The lock dimensions are conceptualized as "units" so that the lock can be generically drawn given any view size. For reference, the total size required by the lock view is 16 units wide and 10 units high. The lock body is 8 units wide and 6 units tall. Since the lock view size is 10 units in height, we can convert from units to actual points by multiply the height by the number of units and dividing by 10.
+    private func pointsFrom(units: CGFloat) -> CGFloat {
+        return lockViewRect.size.height * units / 10.0
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
         
+        // Find the largest size that will fit within the bounds given the aspect ratio.
         var lockViewSize: CGSize
         if self.bounds.width * lockViewAspectRatio.height < self.bounds.height * lockViewAspectRatio.width {
             lockViewSize = CGSize(width: self.bounds.width, height: self.bounds.width * lockViewAspectRatio.height / lockViewAspectRatio.width)
@@ -60,19 +69,6 @@ class LockView: UIView {
         path.lineWidth = 1.0
         
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
-        
-        // Find the largest size that will fit within the bounds given the aspect ratio.
-        var lockViewSize: CGSize
-        if self.bounds.width * lockViewAspectRatio.height < self.bounds.height * lockViewAspectRatio.width {
-            lockViewSize = CGSize(width: self.bounds.width, height: self.bounds.width * lockViewAspectRatio.height / lockViewAspectRatio.width)
-        } else {
-            lockViewSize = CGSize(width: self.bounds.height * lockViewAspectRatio.width / lockViewAspectRatio.height, height: self.bounds.height)
-        }
-        
-        // The lock dimensions are conceptualized as "units" so that the lock can be generically drawn given any view size. For reference, the total size required by the lock view is 16 units wide and 10 units high. The lock body is 8 units wide and 6 units tall. Since the lock view size is 10 units in height, we can convert from units to actual points by multiply the height by the number of units and dividing by 10.
-        func pointsFrom(units: CGFloat) -> CGFloat {
-            return lockViewSize.height * units / 10.0
-        }
     
         // Draw the lock body.
         let lockBodySize = CGSize(width: pointsFrom(units: 8), height: pointsFrom(units: 6))
