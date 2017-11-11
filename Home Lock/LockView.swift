@@ -11,7 +11,19 @@ import UIKit
 @IBDesignable
 class LockView: UIView {
     
-    public var isLocked = false
+    var _isLocked = true { didSet { setNeedsDisplay() } }
+    public var isLocked: Bool {
+        get {
+            return _isLocked
+        }
+        set {
+            if newValue != _isLocked {
+                UIView.transition(with: self, duration: 1.0, options: [.transitionFlipFromTop], animations: {
+                    self._isLocked = newValue
+                }, completion: nil)
+            }
+        }
+    }
 
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()

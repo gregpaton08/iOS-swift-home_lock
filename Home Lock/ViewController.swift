@@ -34,6 +34,11 @@ class ViewController: UIViewController {
         }
     }
     
+    @IBAction func buttonPress(_ sender: Any) {
+        lockView.isLocked = !lockView.isLocked
+    }
+    @IBOutlet weak var lockView: LockView!
+    
     private let homeLock = HomeLock()
     
     /// Load user settings from UserDefaults.
