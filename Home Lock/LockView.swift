@@ -18,10 +18,34 @@ class LockView: UIView {
         let path = UIBezierPath()
         let radius: CGFloat = 11.0
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
-        path.addArc(withCenter: center, radius: radius, startAngle: 0, endAngle: 2.0 * CGFloat.pi, clockwise: false)
+        let dimension = min(self.bounds.width, self.bounds.height)
+//        path.addArc(withCenter: center, radius: radius, startAngle: 0, endAngle: 2.0 * CGFloat.pi, clockwise: false)
+        
+        let lockHeight = dimension
+        let lockWidth = dimension * 8 / 10
+        
+        let lockBodyCenter = CGPoint(x: center.x, y: center.y + (self.bounds.height / 5))
+        let lockBodyWidth = dimension * 8 / 10
+        let lockBodyHeight = dimension * 6 / 10
+        
+        path.move(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
+        path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
+        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
+        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
+        path.close()
+
         UIColor.black.setStroke()
         UIColor.black.setFill()
-        path.lineWidth = 5.0
+        path.lineWidth = 1.0
         path.stroke()
+//        path.fill()
+        
+//        path.move(to: CGPoint(x: center.x - (dimension * 3 / 10), y: center.y + (dimension / 10)))
+        path.addArc(withCenter: CGPoint(x: center.x, y: center.y - (dimension / 10)), radius: dimension * 2.5 / 10, startAngle: 0, endAngle: CGFloat.pi, clockwise: false)
+        path.addArc(withCenter: CGPoint(x: center.x, y: center.y - (dimension / 10)), radius: dimension * 1.5 / 10, startAngle: 0, endAngle: CGFloat.pi, clockwise: false)
+        
+        path.stroke()
+//        path.fill()
+        
     }
 }

@@ -80,7 +80,7 @@ class ViewController: UIViewController {
         
         // If the settings fail to load then segue to the settings page.
         if !loadSettings() {
-            performSegue(withIdentifier: "showSettings", sender: self)
+//            performSegue(withIdentifier: "showSettings", sender: self)
         }
         
         refreshStatus()
