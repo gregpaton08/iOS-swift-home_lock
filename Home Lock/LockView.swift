@@ -42,30 +42,46 @@ class LockView: UIView {
         
         // Start drawing path.
         
-        //
+        // draw the lock body.
         path.move(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
         path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
-        path.addLine(to: lockShackleOuterEdgeStart)
+        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
+        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
+        path.close()
+        path.stroke()
+        
+        // Draw the lock shackle.
+        path.move(to: lockShackleOuterEdgeStart)
+        path.addArc(withCenter: lockShackleCenter, radius: lockShackleOuterEdgeRadius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
+        path.addLine(to: lockShackleOuterEdgeEnd)
+        path.addLine(to: lockShackleInnerEdgeEnd)
+        path.addArc(withCenter: lockShackleCenter, radius: lockShackleInnerEdgeRadius, startAngle: 0, endAngle: CGFloat.pi, clockwise: false)
+        path.addLine(to: lockShackleInnerEdgeStart)
+        path.close()
+        path.stroke()
+        
+        
+//        path.addLine(to: lockShackleOuterEdgeStart)
 //        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
 //        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
 //        path.close()
         
-        path.addArc(withCenter: lockShackleCenter, radius: dimension * 2.5 / 10, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
-        
-        path.addLine(to: lockShackleOuterEdgeEnd)
-        
-        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
-        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
-        path.close()
-//        path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
-
-        path.stroke()
-        
-        path.move(to: lockShackleInnerEdgeStart)
-        path.addArc(withCenter: lockShackleCenter, radius: lockShackleInnerEdgeRadius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
-        path.addLine(to: lockShackleInnerEdgeEnd)
-        path.close()
-        
-        path.stroke()
+//        path.addArc(withCenter: lockShackleCenter, radius: dimension * 2.5 / 10, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
+//
+//        path.addLine(to: lockShackleOuterEdgeEnd)
+//
+//        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
+//        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
+//        path.close()
+////        path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
+//
+//        path.stroke()
+//
+//        path.move(to: lockShackleInnerEdgeStart)
+//        path.addArc(withCenter: lockShackleCenter, radius: lockShackleInnerEdgeRadius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
+//        path.addLine(to: lockShackleInnerEdgeEnd)
+//        path.close()
+//
+//        path.stroke()
     }
 }
