@@ -36,15 +36,10 @@ class LockView: UIView {
         }
     
         // Draw the lock body.
-        let lockBodyCenter = CGPoint(x: center.x, y: center.y + pointsFrom(units: 2))
-        let lockBodyWidth = pointsFrom(units: 8)
-        let lockBodyHeight = pointsFrom(units: 6)
-        path.move(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
-        path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
-        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
-        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
-        path.close()
-        path.stroke()
+        let lockBodySize = CGSize(width: pointsFrom(units: 8), height: pointsFrom(units: 6))
+        let lockBodyOrigin = CGPoint(x: center.x - pointsFrom(units: 4), y: center.y - pointsFrom(units: 1))
+        let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 1.0)
+        lockBodyPath.stroke()
         
         // Draw the lock shackle.
         var lockShackleCenter: CGPoint
