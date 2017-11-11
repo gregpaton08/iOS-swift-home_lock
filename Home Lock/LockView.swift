@@ -11,20 +11,19 @@ import UIKit
 @IBDesignable
 class LockView: UIView {
 
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Draw the checkbox border.
         let path = UIBezierPath()
         UIColor.black.setStroke()
         UIColor.black.setFill()
         path.lineWidth = 1.0
         
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        
+        // Find the largest size that will fit within the bounds given the aspect ratio.
         let lockViewAspectRatio = CGSize(width: 16.0, height: 10.0)
         var lockViewSize: CGSize
         if self.bounds.width * lockViewAspectRatio.height < self.bounds.height * lockViewAspectRatio.width {
-            lockViewSize = CGSize(width: self.bounds.width, height: self.bounds.width * lockViewAspectRatio.width / lockViewAspectRatio.height)
+            lockViewSize = CGSize(width: self.bounds.width, height: self.bounds.width * lockViewAspectRatio.height / lockViewAspectRatio.width)
         } else {
             lockViewSize = CGSize(width: self.bounds.height * lockViewAspectRatio.width / lockViewAspectRatio.height, height: self.bounds.height)
         }
@@ -34,12 +33,12 @@ class LockView: UIView {
             return lockViewSize.height * units / 10.0
         }
         
-        let lockBodyCenter = CGPoint(x: center.x, y: center.y + (self.bounds.height / 5))
-        let lockBodyWidth = lockViewSize.height * 8 / 10
-        let lockBodyHeight = lockViewSize.height * 6 / 10
+        let lockBodyCenter = CGPoint(x: center.x, y: center.y + pointsFrom(units: 2))
+        let lockBodyWidth = pointsFrom(units: 8)
+        let lockBodyHeight = pointsFrom(units: 6)
         
         let lockShackleCenter = CGPoint(x: center.x, y: center.y - pointsFrom(units: 2.5))
-        let lockShackleOuterEdgeRadius = lockViewSize.height * 2.5 / 10
+        let lockShackleOuterEdgeRadius = pointsFrom(units: 2.5)
         let lockShackleOuterEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
         let lockShackleOuterEdgeEnd = CGPoint(x: lockShackleCenter.x + lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
         let lockShackleInnerEdgeRadius = pointsFrom(units: 1.5)
