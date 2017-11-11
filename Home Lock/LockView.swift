@@ -75,7 +75,7 @@ class LockView: UIView {
         // Draw the lock body.
         let lockBodySize = CGSize(width: pointsFrom(units: 8), height: pointsFrom(units: 6))
         let lockBodyOrigin = CGPoint(x: center.x - pointsFrom(units: 4), y: center.y - pointsFrom(units: 1))
-        let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 1.0)
+        let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 3.0)
         lockBodyPath.fill()
     }
 }
