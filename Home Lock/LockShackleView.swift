@@ -11,10 +11,11 @@ import UIKit
 class LockShackleView: UIView {
     
     public var isLocked = true
+    public var lockColor = UIColor.black
     
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
-        UIColor.black.setStroke()
+        lockColor.setFill()
         path.lineWidth = 1.0
         
         let center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
@@ -45,6 +46,6 @@ class LockShackleView: UIView {
         path.addArc(withCenter: lockShackleCenter, radius: lockShackleInnerEdgeRadius, startAngle: 0, endAngle: CGFloat.pi, clockwise: false)
         path.addLine(to: lockShackleInnerEdgeStart)
         path.close()
-        path.stroke()
+        path.fill()
     }
 }

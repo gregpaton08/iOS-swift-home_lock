@@ -24,12 +24,18 @@ class LockView: UIView {
             }
         }
     }
+    public var lockColor = UIColor.black {
+        didSet {
+            lockShackleView.lockColor = lockColor
+        }
+    }
     
     private lazy var lockShackleView: LockShackleView = createLockShackleView()
     
     private func createLockShackleView() -> LockShackleView {
         let shackle = LockShackleView()
         shackle.backgroundColor = UIColor.clear
+        shackle.lockColor = lockColor
         addSubview(shackle)
         return shackle
     }
@@ -61,8 +67,7 @@ class LockView: UIView {
 
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
-        UIColor.black.setStroke()
-        UIColor.black.setFill()
+        lockColor.setFill()
         path.lineWidth = 1.0
         
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
@@ -71,6 +76,6 @@ class LockView: UIView {
         let lockBodySize = CGSize(width: pointsFrom(units: 8), height: pointsFrom(units: 6))
         let lockBodyOrigin = CGPoint(x: center.x - pointsFrom(units: 4), y: center.y - pointsFrom(units: 1))
         let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 1.0)
-        lockBodyPath.stroke()
+        lockBodyPath.fill()
     }
 }
