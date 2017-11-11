@@ -34,9 +34,6 @@ class ViewController: UIViewController, LockViewDelegate {
         }
     }
     
-    @IBAction func buttonPress(_ sender: Any) {
-        lockView.isLocked = !lockView.isLocked
-    }
     @IBOutlet weak var lockView: LockView!
     
     private let homeLock = HomeLock()
@@ -58,6 +55,7 @@ class ViewController: UIViewController, LockViewDelegate {
                 DispatchQueue.main.async {
                     self.lockButton.isEnabled = true
                     self.lockButton.setTitle(status! ? "Unlock" : "Lock", for: .normal)
+                    self.lockView.isLocked = status!
                 }
             } else {
                 DispatchQueue.main.async {
@@ -101,7 +99,8 @@ class ViewController: UIViewController, LockViewDelegate {
     // MARK: - Lock View Delegate
     
     func handleTapFor(lockView: LockView) {
-        lockView.isLocked = !lockView.isLocked
+        if lockButton.isEnabled {
+            lockButtonPress(lockButton)
+        }
     }
 }
-
