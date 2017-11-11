@@ -8,8 +8,43 @@
 
 import UIKit
 
+protocol LockViewDelegate {
+    func handleTapFor(lockView: LockView)
+}
+
 @IBDesignable
 class LockView: UIView {
+    
+    // Initializers
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addTapGesture()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        addTapGesture()
+    }
+    
+    var delegate: LockViewDelegate?
+    
+    private func addTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        self.addGestureRecognizer(tap)
+        self.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    func handleTap(sender: UITapGestureRecognizer? = nil) {
+        delegate?.handleTapFor(lockView: self)
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
+    }
     
     public var isLocked: Bool {
         get {
