@@ -17,7 +17,7 @@ class LockView: UIView {
         UIColor.black.setFill()
         path.lineWidth = 1.0
         
-        let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        let boundsCenter = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         
         // Find the largest size that will fit within the bounds given the aspect ratio.
         let lockViewAspectRatio = CGSize(width: 16.0, height: 10.0)
@@ -32,22 +32,11 @@ class LockView: UIView {
         func pointsFrom(units: CGFloat) -> CGFloat {
             return lockViewSize.height * units / 10.0
         }
-        
+    
+        // Draw the lock body.
         let lockBodyCenter = CGPoint(x: center.x, y: center.y + pointsFrom(units: 2))
         let lockBodyWidth = pointsFrom(units: 8)
         let lockBodyHeight = pointsFrom(units: 6)
-        
-        let lockShackleCenter = CGPoint(x: center.x, y: center.y - pointsFrom(units: 2.5))
-        let lockShackleOuterEdgeRadius = pointsFrom(units: 2.5)
-        let lockShackleOuterEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
-        let lockShackleOuterEdgeEnd = CGPoint(x: lockShackleCenter.x + lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
-        let lockShackleInnerEdgeRadius = pointsFrom(units: 1.5)
-        let lockShackleInnerEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleInnerEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
-        let lockShackleInnerEdgeEnd = CGPoint(x: lockShackleCenter.x + lockShackleInnerEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
-        
-        // Start drawing path.
-        
-        // Draw the lock body.
         path.move(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
         path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
         path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
@@ -56,6 +45,13 @@ class LockView: UIView {
         path.stroke()
         
         // Draw the lock shackle.
+        let lockShackleCenter = CGPoint(x: center.x, y: center.y - pointsFrom(units: 2.5))
+        let lockShackleOuterEdgeRadius = pointsFrom(units: 2.5)
+        let lockShackleOuterEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
+        let lockShackleOuterEdgeEnd = CGPoint(x: lockShackleCenter.x + lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
+        let lockShackleInnerEdgeRadius = pointsFrom(units: 1.5)
+        let lockShackleInnerEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleInnerEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
+        let lockShackleInnerEdgeEnd = CGPoint(x: lockShackleCenter.x + lockShackleInnerEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
         path.move(to: lockShackleOuterEdgeStart)
         path.addArc(withCenter: lockShackleCenter, radius: lockShackleOuterEdgeRadius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
         path.addLine(to: lockShackleOuterEdgeEnd)
