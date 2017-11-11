@@ -16,6 +16,10 @@ class LockView: UIView {
     override func draw(_ rect: CGRect) {
         // Draw the checkbox border.
         let path = UIBezierPath()
+        UIColor.black.setStroke()
+        UIColor.black.setFill()
+        path.lineWidth = 1.0
+        
         let radius: CGFloat = 11.0
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         let dimension = min(self.bounds.width, self.bounds.height)
@@ -28,24 +32,33 @@ class LockView: UIView {
         let lockBodyWidth = dimension * 8 / 10
         let lockBodyHeight = dimension * 6 / 10
         
-        path.move(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
-        path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
-        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
+        let lockShackleCenter = CGPoint(x: center.x, y: center.y - (dimension / 10))
+        let lockShackleOuterEdgeRadius = dimension * 2.5 / 10
+        let lockShackleOuterEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleOuterEdgeRadius, y: lockShackleCenter.y)
+        let lockShackleInnerEdgeRadius = dimension * 1.5 / 10
+        let lockShackleInnerEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleInnerEdgeRadius, y: lockShackleCenter.y)
+        
+        // Start drawing path.
+        //
+        path.move(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
+        path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
+//        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
+//        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
+//        path.close()
+        
+        path.addArc(withCenter: lockShackleCenter, radius: dimension * 2.5 / 10, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
+        
         path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y - (lockBodyHeight / 2)))
+        path.addLine(to: CGPoint(x: lockBodyCenter.x + (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
         path.close()
+//        path.addLine(to: CGPoint(x: lockBodyCenter.x - (lockBodyWidth / 2), y: lockBodyCenter.y + (lockBodyHeight / 2)))
 
-        UIColor.black.setStroke()
-        UIColor.black.setFill()
-        path.lineWidth = 1.0
         path.stroke()
-//        path.fill()
         
-//        path.move(to: CGPoint(x: center.x - (dimension * 3 / 10), y: center.y + (dimension / 10)))
-        path.addArc(withCenter: CGPoint(x: center.x, y: center.y - (dimension / 10)), radius: dimension * 2.5 / 10, startAngle: 0, endAngle: CGFloat.pi, clockwise: false)
-        path.addArc(withCenter: CGPoint(x: center.x, y: center.y - (dimension / 10)), radius: dimension * 1.5 / 10, startAngle: 0, endAngle: CGFloat.pi, clockwise: false)
+        path.move(to: lockShackleInnerEdgeStart)
+        path.addArc(withCenter: lockShackleCenter, radius: lockShackleInnerEdgeRadius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
+        path.close()
         
         path.stroke()
-//        path.fill()
-        
     }
 }
