@@ -16,15 +16,12 @@ class LockView: UIView {
             return lockShackleView.isLocked
         }
         set {
-            lockShackleView.frame.origin.x = lockViewRect.origin.x + (newValue ? 0 : pointsFrom(units: 4))
-//            lockShackleView.transform = lockShackleView.transform.scaledBy(x: 5, y: 5)
-//            lockShackleView.transform = lockShackleView.transform.rotated(by: CGFloat.pi)
-            lockShackleView.isLocked = newValue
-//            if newValue != lockShackleView.isLocked {
-//                UIView.transition(with: lockShackleView, duration: 1.0, options: [.transitionFlipFromRight], animations: {
-//                    self.lockShackleView.isLocked = newValue
-//                }, completion: nil)
-//            }
+            if newValue != lockShackleView.isLocked {
+                lockShackleView.isLocked = newValue
+                UIView.animate(withDuration: 0.5, animations: {
+                    self.lockShackleView.frame.origin.x = self.lockViewRect.origin.x + (newValue ? 0 : self.pointsFrom(units: 4))
+                })
+            }
         }
     }
     
@@ -75,27 +72,5 @@ class LockView: UIView {
         let lockBodyOrigin = CGPoint(x: center.x - pointsFrom(units: 4), y: center.y - pointsFrom(units: 1))
         let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 1.0)
         lockBodyPath.stroke()
-        
-        // Draw the lock shackle.
-//        var lockShackleCenter: CGPoint
-//        if isLocked {
-//            lockShackleCenter = CGPoint(x: center.x, y: center.y - pointsFrom(units: 2.5))
-//        } else {
-//            lockShackleCenter = CGPoint(x: center.x + pointsFrom(units: 5), y: center.y - pointsFrom(units: 2.5))
-//        }
-//        let lockShackleOuterEdgeRadius = pointsFrom(units: 2.5)
-//        let lockShackleOuterEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
-//        let lockShackleOuterEdgeEnd = CGPoint(x: lockShackleCenter.x + lockShackleOuterEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
-//        let lockShackleInnerEdgeRadius = pointsFrom(units: 1.5)
-//        let lockShackleInnerEdgeStart = CGPoint(x: lockShackleCenter.x - lockShackleInnerEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
-//        let lockShackleInnerEdgeEnd = CGPoint(x: lockShackleCenter.x + lockShackleInnerEdgeRadius, y: lockShackleCenter.y + pointsFrom(units: 1.5))
-//        path.move(to: lockShackleOuterEdgeStart)
-//        path.addArc(withCenter: lockShackleCenter, radius: lockShackleOuterEdgeRadius, startAngle: CGFloat.pi, endAngle: 0, clockwise: true)
-//        path.addLine(to: lockShackleOuterEdgeEnd)
-//        path.addLine(to: lockShackleInnerEdgeEnd)
-//        path.addArc(withCenter: lockShackleCenter, radius: lockShackleInnerEdgeRadius, startAngle: 0, endAngle: CGFloat.pi, clockwise: false)
-//        path.addLine(to: lockShackleInnerEdgeStart)
-//        path.close()
-//        path.stroke()
     }
 }

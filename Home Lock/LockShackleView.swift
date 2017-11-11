@@ -18,9 +18,6 @@ class LockShackleView: UIView {
         path.lineWidth = 1.0
         
         let center = CGPoint(x: self.frame.width / 2, y: self.frame.height / 2)
-        
-        // Find the largest size that will fit within the bounds given the aspect ratio.
-        let lockViewAspectRatio = CGSize(width: 16.0, height: 10.0)
         var lockViewSize = self.bounds.size
         
         // The lock dimensions are conceptualized as "units" so that the lock can be generically drawn given any view size. For reference, the total size required by the lock view is 16 units wide and 10 units high. The lock body is 8 units wide and 6 units tall. Since the lock view size is 10 units in height, we can convert from units to actual points by multiply the height by the number of units and dividing by 10.
