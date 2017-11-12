@@ -29,21 +29,6 @@ class LockView: UIView {
     
     var delegate: LockViewDelegate?
     
-    private func addTapGesture() {
-        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
-        tap.numberOfTapsRequired = 1
-        tap.numberOfTouchesRequired = 1
-        self.addGestureRecognizer(tap)
-        self.isUserInteractionEnabled = true
-    }
-    
-    private var animator: UIViewPropertyAnimator!
-    
-    @objc
-    func handleTap(sender: UITapGestureRecognizer? = nil) {
-        delegate?.handleTapFor(lockView: self)
-    }
-    
     public var isLocked: Bool {
         get {
             return lockShackleView.isLocked
@@ -58,18 +43,10 @@ class LockView: UIView {
         }
     }
     
-    private var _isSpinning = false
-    public var isSpinning: Bool {
-        get {
-            return _isSpinning
-        }
-        set {
-            _isSpinning = newValue
-            if _isSpinning {
+    var isSpinning = false {
+        didSet {
+            if isSpinning {
                 rotateSpinView()
-            } else {
-                
-//                lockSpinnerView.layer.removeAllAnimations()
             }
         }
     }
@@ -79,7 +56,7 @@ class LockView: UIView {
         UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveLinear], animations: {
             self.lockSpinnerView.transform = self.lockSpinnerView.transform.rotated(by: CGFloat.pi)
         }, completion: { finished in
-            if finished && self._isSpinning {
+            if finished && self.isSpinning {
                 self.rotateSpinView()
             } else if finished {
                 self.lockSpinnerView.isHidden = true
@@ -91,6 +68,21 @@ class LockView: UIView {
         didSet {
             lockShackleView.lockColor = lockColor
         }
+    }
+    
+    // MARK: - Tap Gesture Recognizer
+    
+    private func addTapGesture() {
+        let tap = UITapGestureRecognizer(target: self, action: #selector(handleTap))
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        self.addGestureRecognizer(tap)
+        self.isUserInteractionEnabled = true
+    }
+    
+    @objc
+    func handleTap(sender: UITapGestureRecognizer? = nil) {
+        delegate?.handleTapFor(lockView: self)
     }
     
     private lazy var lockShackleView: LockShackleView = createLockShackleView()
@@ -141,8 +133,6 @@ class LockView: UIView {
         spinnerRect.origin = CGPoint(x: center.x - pointsFrom(units: 1), y: center.y + pointsFrom(units: 1))
         spinnerRect.size = CGSize(width: pointsFrom(units: 2), height: pointsFrom(units: 2))
         lockSpinnerView.frame = spinnerRect
-        
-//        self.isSpinning = true
     }
 
     override func draw(_ rect: CGRect) {
