@@ -25,6 +25,16 @@ class LockView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addTapGesture()
+        
+        // Create an animator.
+//        animator = UIViewPropertyAnimator(duration: 1.0, curve: .linear, animations: {
+//            self.rotateSpinView()
+//        })
+//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: 0.0, options: [.curveLinear, .repeat], animations: {
+//            UIView.setAnimationRepeatCount(27)
+//            self.rotateSpinView()
+//            self.rotateSpinView()
+//        }, completion: nil)
     }
     
     var delegate: LockViewDelegate?
@@ -36,6 +46,8 @@ class LockView: UIView {
         self.addGestureRecognizer(tap)
         self.isUserInteractionEnabled = true
     }
+    
+    private var animator: UIViewPropertyAnimator!
     
     @objc
     func handleTap(sender: UITapGestureRecognizer? = nil) {
@@ -68,11 +80,23 @@ class LockView: UIView {
         set {
             _isSpinning = newValue
             if _isSpinning {
-                UIView.animate(withDuration: 1.0, delay: 0.0, options: [.repeat], animations: {
-                    self.lockSpinnerView.transform = self.lockSpinnerView.transform.rotated(by: CGFloat.pi)
-                }, completion: nil)
+                rotateSpinView()
+            } else {
+                lockSpinnerView.layer.removeAllAnimations()
             }
+//            animator.startAnimation()
         }
+    }
+    
+    private func rotateSpinView() {
+        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveLinear], animations: {
+            self.lockSpinnerView.transform = self.lockSpinnerView.transform.rotated(by: CGFloat.pi)
+        }, completion: { finished in
+            if finished && self._isSpinning {
+                self.rotateSpinView()
+            }
+        })
+//        lockSpinnerView.transform = lockSpinnerView.transform.rotated(by: CGFloat.pi)
     }
     
     public var lockColor = UIColor.black {
@@ -129,7 +153,7 @@ class LockView: UIView {
         spinnerRect.size = CGSize(width: pointsFrom(units: 2), height: pointsFrom(units: 2))
         lockSpinnerView.frame = spinnerRect
         
-        self.isSpinning = true
+//        self.isSpinning = true
     }
 
     override func draw(_ rect: CGRect) {

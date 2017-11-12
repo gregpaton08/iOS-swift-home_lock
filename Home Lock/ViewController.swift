@@ -32,6 +32,8 @@ class ViewController: UIViewController, LockViewDelegate {
                 self.refreshStatus()
             }
         }
+        
+        lockView.isSpinning = !lockView.isSpinning
     }
     
     @IBOutlet weak var lockView: LockView!
@@ -102,5 +104,7 @@ class ViewController: UIViewController, LockViewDelegate {
         if lockButton.isEnabled {
             lockButtonPress(lockButton)
         }
+        
+        lockView.isSpinning = !lockView.isSpinning
     }
 }
