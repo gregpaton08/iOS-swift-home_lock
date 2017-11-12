@@ -58,12 +58,12 @@ class ViewController: UIViewController, LockViewDelegate {
                     self.lockView.isLocked = status!
                 }
             } else {
-                DispatchQueue.main.async {
-                    let alertController = UIAlertController(title: "Error", message: "Could not connect to server", preferredStyle: .alert)
-                    let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-                    alertController.addAction(cancelAction)
-                    self.present(alertController, animated: true, completion: nil)
-                }
+//                DispatchQueue.main.async {
+//                    let alertController = UIAlertController(title: "Error", message: "Could not connect to server", preferredStyle: .alert)
+//                    let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+//                    alertController.addAction(cancelAction)
+//                    self.present(alertController, animated: true, completion: nil)
+//                }
             }
         }
     }

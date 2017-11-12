@@ -59,6 +59,22 @@ class LockView: UIView {
             }
         }
     }
+    
+    private var _isSpinning = false
+    public var isSpinning: Bool {
+        get {
+            return _isSpinning
+        }
+        set {
+            _isSpinning = newValue
+            if _isSpinning {
+                UIView.animate(withDuration: 1.0, delay: 0.0, options: [.repeat], animations: {
+                    self.lockSpinnerView.transform = self.lockSpinnerView.transform.rotated(by: CGFloat.pi)
+                }, completion: nil)
+            }
+        }
+    }
+    
     public var lockColor = UIColor.black {
         didSet {
             lockShackleView.lockColor = lockColor
@@ -73,6 +89,14 @@ class LockView: UIView {
         shackle.lockColor = lockColor
         addSubview(shackle)
         return shackle
+    }
+    
+    private lazy var lockSpinnerView: LockSpinnerView = createLockSpinnerView()
+    
+    private func createLockSpinnerView() -> LockSpinnerView {
+        let spinner = LockSpinnerView()
+        addSubview(spinner)
+        return spinner
     }
     
     private let lockViewAspectRatio = CGSize(width: 16.0, height: 10.0)
@@ -98,6 +122,14 @@ class LockView: UIView {
         lockViewRect.size = lockViewSize
         
         lockShackleView.frame = lockViewRect
+        
+        var spinnerRect = CGRect.zero
+        let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+        spinnerRect.origin = CGPoint(x: center.x - pointsFrom(units: 1), y: center.y + pointsFrom(units: 1))
+        spinnerRect.size = CGSize(width: pointsFrom(units: 2), height: pointsFrom(units: 2))
+        lockSpinnerView.frame = spinnerRect
+        
+        self.isSpinning = true
     }
 
     override func draw(_ rect: CGRect) {
