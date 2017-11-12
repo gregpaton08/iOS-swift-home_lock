@@ -126,7 +126,9 @@ class LockView: UIView {
         lockViewRect.origin = CGPoint(x: (self.bounds.width - lockViewSize.width) / 2, y: (self.bounds.height - lockViewSize.height) / 2)
         lockViewRect.size = lockViewSize
         
-        lockShackleView.frame = lockViewRect
+        lockShackleView.frame.origin.x = lockViewRect.origin.x + (isLocked ? 0 : pointsFrom(units: 4))
+        lockShackleView.frame.origin.y = lockViewRect.origin.y
+        lockShackleView.frame.size = lockViewRect.size
         
         var spinnerRect = CGRect.zero
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
