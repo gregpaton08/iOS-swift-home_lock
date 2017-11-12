@@ -25,16 +25,6 @@ class LockView: UIView {
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addTapGesture()
-        
-        // Create an animator.
-//        animator = UIViewPropertyAnimator(duration: 1.0, curve: .linear, animations: {
-//            self.rotateSpinView()
-//        })
-//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1.0, delay: 0.0, options: [.curveLinear, .repeat], animations: {
-//            UIView.setAnimationRepeatCount(27)
-//            self.rotateSpinView()
-//            self.rotateSpinView()
-//        }, completion: nil)
     }
     
     var delegate: LockViewDelegate?
@@ -82,21 +72,23 @@ class LockView: UIView {
             if _isSpinning {
                 rotateSpinView()
             } else {
-                lockSpinnerView.layer.removeAllAnimations()
+                
+//                lockSpinnerView.layer.removeAllAnimations()
             }
-//            animator.startAnimation()
         }
     }
     
     private func rotateSpinView() {
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: [.curveLinear], animations: {
+        lockSpinnerView.isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveLinear], animations: {
             self.lockSpinnerView.transform = self.lockSpinnerView.transform.rotated(by: CGFloat.pi)
         }, completion: { finished in
             if finished && self._isSpinning {
                 self.rotateSpinView()
+            } else if finished {
+                self.lockSpinnerView.isHidden = true
             }
         })
-//        lockSpinnerView.transform = lockSpinnerView.transform.rotated(by: CGFloat.pi)
     }
     
     public var lockColor = UIColor.black {
@@ -119,6 +111,7 @@ class LockView: UIView {
     
     private func createLockSpinnerView() -> LockSpinnerView {
         let spinner = LockSpinnerView()
+        spinner.isHidden = true
         addSubview(spinner)
         return spinner
     }
