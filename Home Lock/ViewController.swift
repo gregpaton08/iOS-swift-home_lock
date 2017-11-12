@@ -10,31 +10,6 @@ import UIKit
 import HomeLockControl
 
 class ViewController: UIViewController, LockViewDelegate {
-
-    @IBOutlet weak var lockButton: UIButton!
-    
-    @IBAction func lockButtonPress(_ sender: UIButton) {
-        sender.isEnabled = false
-        let lockStatus: Bool?
-        switch sender.titleLabel?.text ?? "" {
-        case "Lock":
-            lockStatus = true
-        case "Unlock":
-            lockStatus = false
-        default:
-            return
-        }
-        
-        sender.setTitle(sender.title(for: .normal)! + "ing...", for: .normal)
-        
-        homeLock.lockDoor(lockStatus!) {
-            DispatchQueue.main.async {
-                self.refreshStatus()
-            }
-        }
-        
-        lockView.isSpinning = !lockView.isSpinning
-    }
     
     @IBOutlet weak var lockView: LockView!
     
@@ -55,8 +30,7 @@ class ViewController: UIViewController, LockViewDelegate {
         homeLock.getStatus() { (status, error) in
             if status != nil {
                 DispatchQueue.main.async {
-                    self.lockButton.isEnabled = true
-                    self.lockButton.setTitle(status! ? "Unlock" : "Lock", for: .normal)
+//                    lockView.isEnabled = true
                     self.lockView.isLocked = status!
                 }
             } else {
@@ -101,10 +75,13 @@ class ViewController: UIViewController, LockViewDelegate {
     // MARK: - Lock View Delegate
     
     func handleTapFor(lockView: LockView) {
-        if lockButton.isEnabled {
-            lockButtonPress(lockButton)
+        lockView.isSpinning = true
+        homeLock.lockDoor(!lockView.isLocked) {
+            DispatchQueue.main.async {
+                self.refreshStatus()
+                self.lockView.isSpinning = false
+            }
         }
         
-        lockView.isSpinning = !lockView.isSpinning
     }
 }
