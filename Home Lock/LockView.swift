@@ -44,10 +44,6 @@ class LockView: UIView {
         delegate?.handleTapFor(lockView: self)
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
-    }
-    
     public var isLocked: Bool {
         get {
             return lockShackleView.isLocked
