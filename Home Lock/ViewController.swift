@@ -17,7 +17,7 @@ class ViewController: UIViewController, LockViewDelegate {
     
     /// Load user settings from UserDefaults.
     private func loadSettings() -> Bool {
-        if let address = HLSettings.getSetting(.address) as? String, address.characters.count > 0, let port = HLSettings.getSetting(.port) as? String, port.characters.count > 0 {
+        if let address = HLSettings.getSetting(.address) as? String, address.count > 0, let port = HLSettings.getSetting(.port) as? String, port.count > 0 {
             homeLock.serverAddress = address
             homeLock.serverPort = port
             return true
@@ -82,6 +82,5 @@ class ViewController: UIViewController, LockViewDelegate {
                 self.lockView.isSpinning = false
             }
         }
-        
     }
 }
