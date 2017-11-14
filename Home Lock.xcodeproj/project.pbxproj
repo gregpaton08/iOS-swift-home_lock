@@ -21,9 +21,6 @@
 		3760304F1F929225003C91DB /* HomeLockControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3760304D1F9291DB003C91DB /* HomeLockControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		376030561F92C506003C91DB /* HomeLockControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3760304D1F9291DB003C91DB /* HomeLockControl.framework */; };
 		37A241971FA0565A00DE70F8 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A241961FA0565A00DE70F8 /* Reachability.swift */; };
-		37F2630F1FB63638000CF96F /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F2630E1FB63638000CF96F /* LockView.swift */; };
-		37F263111FB76AB5000CF96F /* LockShackleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F263101FB76AB5000CF96F /* LockShackleView.swift */; };
-		37F263131FB7C332000CF96F /* LockSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F263121FB7C332000CF96F /* LockSpinnerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,9 +90,6 @@
 		376030541F92A820003C91DB /* Home Lock.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Home Lock.entitlements"; sourceTree = "<group>"; };
 		376030551F92A8CB003C91DB /* Widget.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Widget.entitlements; sourceTree = "<group>"; };
 		37A241961FA0565A00DE70F8 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		37F2630E1FB63638000CF96F /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
-		37F263101FB76AB5000CF96F /* LockShackleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockShackleView.swift; sourceTree = "<group>"; };
-		37F263121FB7C332000CF96F /* LockSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSpinnerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,9 +144,6 @@
 				375FF7841F813EDE00E1A856 /* LaunchScreen.storyboard */,
 				375FF7871F813EDE00E1A856 /* Info.plist */,
 				375FF78D1F8151EA00E1A856 /* SettingsTableViewController.swift */,
-				37F2630E1FB63638000CF96F /* LockView.swift */,
-				37F263101FB76AB5000CF96F /* LockShackleView.swift */,
-				37F263121FB7C332000CF96F /* LockSpinnerView.swift */,
 			);
 			path = "Home Lock";
 			sourceTree = "<group>";
@@ -322,9 +313,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				375FF77E1F813EDE00E1A856 /* ViewController.swift in Sources */,
-				37F2630F1FB63638000CF96F /* LockView.swift in Sources */,
-				37F263111FB76AB5000CF96F /* LockShackleView.swift in Sources */,
-				37F263131FB7C332000CF96F /* LockSpinnerView.swift in Sources */,
 				375FF77C1F813EDE00E1A856 /* AppDelegate.swift in Sources */,
 				375FF78E1F8151EA00E1A856 /* SettingsTableViewController.swift in Sources */,
 			);
