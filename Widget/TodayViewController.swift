@@ -10,9 +10,9 @@ import UIKit
 import NotificationCenter
 import HomeLockControl
 
-class TodayViewController: UIViewController, NCWidgetProviding {
-        
-    @IBOutlet weak var doorLockSwitch: UISwitch!
+class TodayViewController: UIViewController, NCWidgetProviding, LockViewDelegate {
+    
+    @IBOutlet weak var lockView: LockView!
     
     @IBAction func doorLockSwitchPress(_ sender: UISwitch) {
         homeLock.lockDoor(sender.isOn) {
@@ -25,13 +25,15 @@ class TodayViewController: UIViewController, NCWidgetProviding {
     private let homeLock = HomeLock()
     
     private func refreshStatus() {
+        lockView.isSpinning = true
         homeLock.getStatus() { (status, error) in
             DispatchQueue.main.async {
+                self.lockView.isSpinning = false
                 if let lockStatus = status {
-                    self.doorLockSwitch.isEnabled = true
-                    self.doorLockSwitch.setOn(lockStatus, animated: true)
+//                    self.lockView.isEnabled = true
+                    self.lockView.isLocked = lockStatus
                 } else {
-                    self.doorLockSwitch.isEnabled = false
+//                    self.lockView.isEnabled = false
                 }
             }
         }
@@ -54,7 +56,7 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             print("Could not start reachability notifier...")
         }
         
-        doorLockSwitch.isEnabled = false
+//        lockView.isEnabled = false
         
         if let address = HLSettings.getSetting(.address) as? String, let port = HLSettings.getSetting(.port) as? String {
             homeLock.serverAddress = address
@@ -62,12 +64,25 @@ class TodayViewController: UIViewController, NCWidgetProviding {
             
             refreshStatus()
         }
+        
+        lockView.delegate = self
     }
     
     func widgetPerformUpdate(completionHandler: (@escaping (NCUpdateResult) -> Void)) {
         refreshStatus()
         
         completionHandler(NCUpdateResult.newData)
+    }
+    
+    // MARK: - Lock View Delegate
+    
+    func handleTapFor(lockView: LockView) {
+        lockView.isSpinning = true
+        homeLock.lockDoor(!lockView.isLocked) {
+            DispatchQueue.main.async {
+                self.refreshStatus()
+            }
+        }
     }
     
 }

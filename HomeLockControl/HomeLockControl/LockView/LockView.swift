@@ -8,26 +8,26 @@
 
 import UIKit
 
-protocol LockViewDelegate {
+public protocol LockViewDelegate {
     func handleTapFor(lockView: LockView)
 }
 
 @IBDesignable
-class LockView: UIView {
+public class LockView: UIView {
     
     // Initializers
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         addTapGesture()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         addTapGesture()
     }
     
-    var delegate: LockViewDelegate?
+    public var delegate: LockViewDelegate?
     
     public var isLocked: Bool {
         get {
@@ -43,7 +43,7 @@ class LockView: UIView {
         }
     }
     
-    var isSpinning = false {
+    public var isSpinning = false {
         didSet {
             if isSpinning {
                 rotateSpinView()
@@ -112,7 +112,7 @@ class LockView: UIView {
         return lockViewRect.size.height * units / 10.0
     }
     
-    override func layoutSubviews() {
+    public override func layoutSubviews() {
         super.layoutSubviews()
         
         // Find the largest size that will fit within the bounds given the aspect ratio.
@@ -137,7 +137,7 @@ class LockView: UIView {
         lockSpinnerView.frame = spinnerRect
     }
     
-    override func draw(_ rect: CGRect) {
+    public override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
         lockColor.setFill()
         path.lineWidth = 1.0
