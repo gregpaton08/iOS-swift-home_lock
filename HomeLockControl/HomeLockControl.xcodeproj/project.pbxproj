@@ -7,12 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372C902B1FBA9161004C5E0F /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902A1FBA9161004C5E0F /* LockView.swift */; };
+		372C902D1FBA9170004C5E0F /* LockShackleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902C1FBA9170004C5E0F /* LockShackleView.swift */; };
+		372C902F1FBA917A004C5E0F /* LockSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */; };
 		376030271F927F57003C91DB /* HomeLockControl.h in Headers */ = {isa = PBXBuildFile; fileRef = 376030251F927F57003C91DB /* HomeLockControl.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3760302E1F9280C0003C91DB /* HomeLock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3760302D1F9280C0003C91DB /* HomeLock.swift */; };
 		376030531F92A0C0003C91DB /* HLSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 376030521F92A0C0003C91DB /* HLSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		372C902A1FBA9161004C5E0F /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
+		372C902C1FBA9170004C5E0F /* LockShackleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockShackleView.swift; sourceTree = "<group>"; };
+		372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSpinnerView.swift; sourceTree = "<group>"; };
 		376030221F927F57003C91DB /* HomeLockControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HomeLockControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		376030251F927F57003C91DB /* HomeLockControl.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HomeLockControl.h; sourceTree = "<group>"; };
 		376030261F927F57003C91DB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -31,6 +37,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		372C90291FBA9148004C5E0F /* LockView */ = {
+			isa = PBXGroup;
+			children = (
+				372C902A1FBA9161004C5E0F /* LockView.swift */,
+				372C902C1FBA9170004C5E0F /* LockShackleView.swift */,
+				372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */,
+			);
+			path = LockView;
+			sourceTree = "<group>";
+		};
 		376030181F927F57003C91DB = {
 			isa = PBXGroup;
 			children = (
@@ -50,6 +66,7 @@
 		376030241F927F57003C91DB /* HomeLockControl */ = {
 			isa = PBXGroup;
 			children = (
+				372C90291FBA9148004C5E0F /* LockView */,
 				3760302D1F9280C0003C91DB /* HomeLock.swift */,
 				376030251F927F57003C91DB /* HomeLockControl.h */,
 				376030261F927F57003C91DB /* Info.plist */,
@@ -141,6 +158,9 @@
 			files = (
 				376030531F92A0C0003C91DB /* HLSettings.swift in Sources */,
 				3760302E1F9280C0003C91DB /* HomeLock.swift in Sources */,
+				372C902F1FBA917A004C5E0F /* LockSpinnerView.swift in Sources */,
+				372C902B1FBA9161004C5E0F /* LockView.swift in Sources */,
+				372C902D1FBA9170004C5E0F /* LockShackleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
