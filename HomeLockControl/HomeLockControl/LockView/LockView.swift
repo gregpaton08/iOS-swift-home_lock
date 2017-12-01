@@ -82,7 +82,10 @@ public class LockView: UIView {
     
     @objc
     func handleTap(sender: UITapGestureRecognizer? = nil) {
-        delegate?.handleTapFor(lockView: self)
+        // Don't allow use to click when spinning.
+        if !isSpinning {
+            delegate?.handleTapFor(lockView: self)
+        }
     }
     
     private lazy var lockShackleView: LockShackleView = createLockShackleView()
