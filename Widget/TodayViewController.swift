@@ -49,6 +49,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, LockViewDelegate
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        lockView.isSpinning = true
+        
         NotificationCenter.default.addObserver(self, selector: #selector(reachabilityChanged), name: .reachabilityChanged, object: reachability)
         do {
             try reachability.startNotifier()
@@ -61,9 +63,9 @@ class TodayViewController: UIViewController, NCWidgetProviding, LockViewDelegate
         if let address = HLSettings.getSetting(.address) as? String, let port = HLSettings.getSetting(.port) as? String {
             homeLock.serverAddress = address
             homeLock.serverPort = port
-            
-            refreshStatus()
         }
+        
+        refreshStatus()
         
         lockView.delegate = self
     }
