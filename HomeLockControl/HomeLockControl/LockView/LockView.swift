@@ -104,7 +104,7 @@ public class LockView: UIView {
     @objc
     func handleTap(sender: UITapGestureRecognizer? = nil) {
         // Don't allow user to click when lock is disabled of when lock is spinning.
-        if !isEnabled && !isSpinning {
+        if isEnabled && !isSpinning {
             delegate?.handleTapFor(lockView: self)
         }
     }
