@@ -29,6 +29,12 @@ public class LockView: UIView {
     
     public var delegate: LockViewDelegate?
     
+    public var isEnabled = true {
+        didSet {
+            currentLockColor = isEnabled ? lockColor : lockColorDisabled
+        }
+    }
+    
     public var isLocked: Bool {
         get {
             return lockShackleView.isLocked
@@ -64,9 +70,14 @@ public class LockView: UIView {
         })
     }
     
+    private var currentLockColor = UIColor.black
+    private var lockColorDisabled = UIColor.red
     public var lockColor = UIColor.black {
         didSet {
-            lockShackleView.lockColor = lockColor
+            if isEnabled {
+                currentLockColor = lockColor
+                lockShackleView.lockColor = currentLockColor
+            }
         }
     }
     
@@ -93,7 +104,7 @@ public class LockView: UIView {
     private func createLockShackleView() -> LockShackleView {
         let shackle = LockShackleView()
         shackle.backgroundColor = UIColor.clear
-        shackle.lockColor = lockColor
+        shackle.lockColor = currentLockColor
         addSubview(shackle)
         return shackle
     }
@@ -142,7 +153,7 @@ public class LockView: UIView {
     
     public override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
-        lockColor.setFill()
+        currentLockColor.setFill()
         path.lineWidth = 1.0
         
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
