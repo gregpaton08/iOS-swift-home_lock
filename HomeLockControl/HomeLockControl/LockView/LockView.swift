@@ -33,12 +33,7 @@ public class LockView: UIView {
     
     public var isEnabled = true {
         didSet {
-            if isEnabled != oldValue {
-                currentLockColor = isEnabled ? lockColor : lockColorDisabled
-                setNeedsDisplay()
-                lockShackleView.lockColor = currentLockColor
-                lockShackleView.setNeedsDisplay()
-            }
+            currentLockColor = isEnabled ? lockColor : lockColorDisabled
         }
     }
     
@@ -77,7 +72,15 @@ public class LockView: UIView {
         })
     }
     
-    private var currentLockColor = UIColor.black
+    private var currentLockColor = UIColor.black {
+        didSet {
+            if currentLockColor != oldValue {
+                setNeedsDisplay()
+                lockShackleView.lockColor = currentLockColor
+                lockShackleView.setNeedsDisplay()
+            }
+        }
+    }
     private var lockColorDisabled = UIColor.red
     public var lockColor = UIColor.black {
         didSet {
