@@ -78,6 +78,7 @@ public class LockView: UIView {
                 setNeedsDisplay()
                 lockShackleView.lockColor = currentLockColor
                 lockShackleView.setNeedsDisplay()
+                lockSpinnerView.backgroundColor = currentLockColor
             }
         }
     }
@@ -86,7 +87,6 @@ public class LockView: UIView {
         didSet {
             if isEnabled {
                 currentLockColor = lockColor
-                lockShackleView.lockColor = currentLockColor
             }
         }
     }
