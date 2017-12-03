@@ -27,14 +27,14 @@ class ViewController: UIViewController, LockViewDelegate {
     
     /// Refresh the lock status.
     private func refreshStatus() {
+        lockView.isSpinning = true
         homeLock.getStatus() { (status, error) in
-            if status != nil {
-                DispatchQueue.main.async {
+            DispatchQueue.main.async {
+                self.lockView.isSpinning = false
+                if status != nil {
                     self.lockView.isEnabled = true
                     self.lockView.isLocked = status!
-                }
-            } else {
-                DispatchQueue.main.async {
+                } else {
                     self.lockView.isEnabled = false
 //                    let alertController = UIAlertController(title: "Error", message: "Could not connect to server", preferredStyle: .alert)
 //                    let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
@@ -80,7 +80,6 @@ class ViewController: UIViewController, LockViewDelegate {
         homeLock.lockDoor(!lockView.isLocked) {
             DispatchQueue.main.async {
                 self.refreshStatus()
-                self.lockView.isSpinning = false
             }
         }
     }
