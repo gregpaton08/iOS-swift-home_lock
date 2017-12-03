@@ -30,16 +30,17 @@ class ViewController: UIViewController, LockViewDelegate {
         homeLock.getStatus() { (status, error) in
             if status != nil {
                 DispatchQueue.main.async {
-//                    lockView.isEnabled = true
+                    self.lockView.isEnabled = true
                     self.lockView.isLocked = status!
                 }
             } else {
-//                DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    self.lockView.isEnabled = false
 //                    let alertController = UIAlertController(title: "Error", message: "Could not connect to server", preferredStyle: .alert)
 //                    let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
 //                    alertController.addAction(cancelAction)
 //                    self.present(alertController, animated: true, completion: nil)
-//                }
+                }
             }
         }
     }

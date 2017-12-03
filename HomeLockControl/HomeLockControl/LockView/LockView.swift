@@ -27,11 +27,18 @@ public class LockView: UIView {
         addTapGesture()
     }
     
+    // MARK: - API
+    
     public var delegate: LockViewDelegate?
     
     public var isEnabled = true {
         didSet {
-            currentLockColor = isEnabled ? lockColor : lockColorDisabled
+            if isEnabled != oldValue {
+                currentLockColor = isEnabled ? lockColor : lockColorDisabled
+                setNeedsDisplay()
+                lockShackleView.lockColor = currentLockColor
+                lockShackleView.setNeedsDisplay()
+            }
         }
     }
     
