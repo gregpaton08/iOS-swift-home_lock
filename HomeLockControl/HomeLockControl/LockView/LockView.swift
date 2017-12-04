@@ -30,6 +30,8 @@ public class LockView: UIView {
     private func setup() {
         addTapGesture()
         
+        lockBodyView.lockColor = currentLockColor
+        addSubview(lockBodyView)
         lockShackleView.lockColor = currentLockColor
         addSubview(lockShackleView)
         addSubview(lockDisabledView)
@@ -108,6 +110,8 @@ public class LockView: UIView {
     
     // MARK: - Subview configuration
     
+    private var lockBodyView = LockBodyView()
+    
     private var lockShackleView = LockShackleView()
     
     private var lockSpinnerView = LockSpinnerView()
@@ -153,6 +157,8 @@ public class LockView: UIView {
         lockViewRect.origin = CGPoint(x: (self.bounds.width - lockViewSize.width) / 2, y: (self.bounds.height - lockViewSize.height) / 2)
         lockViewRect.size = lockViewSize
         
+        lockBodyView.frame = CGRect(origin: lockBodyOrigin, size: lockBodySize)
+        
         lockShackleView.frame.origin.x = lockViewRect.origin.x + (isLocked ? 0 : pointsFrom(units: 4))
         lockShackleView.frame.origin.y = lockViewRect.origin.y
         lockShackleView.frame.size = lockViewRect.size
@@ -167,13 +173,13 @@ public class LockView: UIView {
         lockSpinnerView.frame = spinnerRect
     }
     
-    public override func draw(_ rect: CGRect) {
-        let path = UIBezierPath()
-        currentLockColor.setFill()
-        path.lineWidth = 1.0
-        
-        // Draw the lock body.
-        let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 3.0)
-        lockBodyPath.fill()
-    }
+//    public override func draw(_ rect: CGRect) {
+//        let path = UIBezierPath()
+//        currentLockColor.setFill()
+//        path.lineWidth = 1.0
+//
+//        // Draw the lock body.
+//        let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 3.0)
+//        lockBodyPath.fill()
+//    }
 }
