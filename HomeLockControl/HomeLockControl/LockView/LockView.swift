@@ -128,8 +128,30 @@ public class LockView: UIView {
         return spinner
     }
     
+    private lazy var lockDisabledView: LockDisableView = {
+        let disabled = LockDisableView()
+        disabled.backgroundColor = UIColor.gray
+        addSubview(disabled)
+        return disabled
+    }()
+    
+    // MARK:- Geometry
+    
     private let lockViewAspectRatio = CGSize(width: 16.0, height: 10.0)
     private var lockViewRect = CGRect()
+    
+    private var lockBodySize: CGSize {
+        get {
+            return CGSize(width: pointsFrom(units: 8), height: pointsFrom(units: 6))
+        }
+    }
+    
+    private var lockBodyOrigin: CGPoint {
+        get {
+            let boundsCenter = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
+            return CGPoint(x: boundsCenter.x - pointsFrom(units: 4), y: boundsCenter.y - pointsFrom(units: 1))
+        }
+    }
     
     // The lock dimensions are conceptualized as "units" so that the lock can be generically drawn given any view size. For reference, the total size required by the lock view is 16 units wide and 10 units high. The lock body is 8 units wide and 6 units tall. Since the lock view size is 10 units in height, we can convert from units to actual points by multiply the height by the number of units and dividing by 10.
     private func pointsFrom(units: CGFloat) -> CGFloat {
@@ -159,6 +181,9 @@ public class LockView: UIView {
         spinnerRect.origin = CGPoint(x: center.x - pointsFrom(units: 1), y: center.y + pointsFrom(units: 1))
         spinnerRect.size = CGSize(width: pointsFrom(units: 2), height: pointsFrom(units: 2))
         lockSpinnerView.frame = spinnerRect
+        
+        lockDisabledView.frame.origin = lockBodyOrigin
+        lockDisabledView.frame.size = lockBodySize
     }
     
     public override func draw(_ rect: CGRect) {
@@ -166,11 +191,7 @@ public class LockView: UIView {
         currentLockColor.setFill()
         path.lineWidth = 1.0
         
-        let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
-        
         // Draw the lock body.
-        let lockBodySize = CGSize(width: pointsFrom(units: 8), height: pointsFrom(units: 6))
-        let lockBodyOrigin = CGPoint(x: center.x - pointsFrom(units: 4), y: center.y - pointsFrom(units: 1))
         let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 3.0)
         lockBodyPath.fill()
     }
