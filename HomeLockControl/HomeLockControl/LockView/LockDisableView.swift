@@ -10,6 +10,25 @@ import UIKit
 
 class LockDisableView: UIView {
     
+    // Initializers
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+
+    public func setup() {
+        isHidden = true
+        backgroundColor = UIColor.clear
+    }
+    
+    // MARK: - API
+    
     public var crossColor = UIColor.black
 
     override func draw(_ rect: CGRect) {

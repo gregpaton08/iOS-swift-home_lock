@@ -125,12 +125,7 @@ public class LockView: UIView {
         return spinner
     }()
     
-    private lazy var lockDisabledView: LockDisableView = {
-        let disabled = LockDisableView()
-        disabled.backgroundColor = UIColor.clear
-        disabled.isHidden = !isEnabled
-        return disabled
-    }()
+    private var lockDisabledView = LockDisableView()
     
     // MARK:- Geometry
     
