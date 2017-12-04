@@ -111,12 +111,7 @@ public class LockView: UIView {
     
     // MARK:- Subview configuration
     
-    private lazy var lockShackleView: LockShackleView = {
-        let shackle = LockShackleView()
-        shackle.backgroundColor = UIColor.clear
-        shackle.lockColor = currentLockColor
-        return shackle
-    }()
+    private var lockShackleView = LockShackleView()
     
     private var lockSpinnerView = LockSpinnerView()
     
@@ -157,6 +152,7 @@ public class LockView: UIView {
         super.layoutSubviews()
         
         add(newSubview: lockShackleView)
+        lockShackleView.lockColor = currentLockColor
         add(newSubview: lockDisabledView)
         add(newSubview: lockSpinnerView)
         

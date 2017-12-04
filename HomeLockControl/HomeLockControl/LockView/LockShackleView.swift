@@ -10,6 +10,24 @@ import UIKit
 
 class LockShackleView: UIView {
     
+    // Initializers
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    public func setup() {
+        backgroundColor = UIColor.clear
+    }
+    
+    // MARK: - API
+    
     public var isLocked = true
     public var lockColor = UIColor.black
     
