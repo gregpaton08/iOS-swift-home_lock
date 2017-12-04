@@ -109,23 +109,19 @@ public class LockView: UIView {
         }
     }
     
-    private lazy var lockShackleView: LockShackleView = createLockShackleView()
-    
-    private func createLockShackleView() -> LockShackleView {
+    private lazy var lockShackleView: LockShackleView = {
         let shackle = LockShackleView()
         shackle.backgroundColor = UIColor.clear
         shackle.lockColor = currentLockColor
         return shackle
-    }
+    }()
     
-    private lazy var lockSpinnerView: LockSpinnerView = createLockSpinnerView()
-    
-    private func createLockSpinnerView() -> LockSpinnerView {
+    private lazy var lockSpinnerView: LockSpinnerView = {
         let spinner = LockSpinnerView()
         spinner.isHidden = true
         spinner.backgroundColor = UIColor.clear
         return spinner
-    }
+    }()
     
     private lazy var lockDisabledView: LockDisableView = {
         let disabled = LockDisableView()
