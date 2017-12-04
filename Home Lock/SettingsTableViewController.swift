@@ -20,17 +20,12 @@ class SettingsTableViewController: UITableViewController {
         if let address = HLSettings.getSetting(.address) as? String {
             addressTextField.text = address
         }
-        
-        if let port = HLSettings.getSetting(.port) as? String {
-            portTextField.text = port
-        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         let _ = HLSettings.setSetting(addressTextField.text!, forKey: .address)
-        let _ = HLSettings.setSetting(portTextField.text!, forKey: .port)
     }
 
 }

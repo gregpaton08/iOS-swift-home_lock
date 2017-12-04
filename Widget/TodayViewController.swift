@@ -60,9 +60,8 @@ class TodayViewController: UIViewController, NCWidgetProviding, LockViewDelegate
         
 //        lockView.isEnabled = false
         
-        if let address = HLSettings.getSetting(.address) as? String, let port = HLSettings.getSetting(.port) as? String {
-            homeLock.serverAddress = address
-            homeLock.serverPort = port
+        if let address = HLSettings.getSetting(.address) as? String {
+            homeLock.address = address
         }
         
         refreshStatus()

@@ -17,9 +17,8 @@ class ViewController: UIViewController, LockViewDelegate {
     
     /// Load user settings from UserDefaults.
     private func loadSettings() -> Bool {
-        if let address = HLSettings.getSetting(.address) as? String, address.count > 0, let port = HLSettings.getSetting(.port) as? String, port.count > 0 {
+        if let address = HLSettings.getSetting(.address) as? String, address.count > 0 {
             homeLock.serverAddress = address
-            homeLock.serverPort = port
             return true
         }
         return false
