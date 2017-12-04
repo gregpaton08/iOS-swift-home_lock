@@ -19,12 +19,21 @@ public class LockView: UIView {
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        addTapGesture()
+        setup()
     }
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        setup()
+    }
+    
+    private func setup() {
         addTapGesture()
+        
+        lockShackleView.lockColor = currentLockColor
+        addSubview(lockShackleView)
+        addSubview(lockDisabledView)
+        addSubview(lockSpinnerView)
     }
     
     // MARK: - API
@@ -150,11 +159,6 @@ public class LockView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
-        
-        add(newSubview: lockShackleView)
-        lockShackleView.lockColor = currentLockColor
-        add(newSubview: lockDisabledView)
-        add(newSubview: lockSpinnerView)
         
         // Find the largest size that will fit within the bounds given the aspect ratio.
         var lockViewSize: CGSize
