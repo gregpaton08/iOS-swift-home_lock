@@ -116,7 +116,7 @@ public class LockView: UIView {
         let shackle = LockShackleView()
         shackle.backgroundColor = UIColor.clear
         shackle.lockColor = currentLockColor
-        addSubview(shackle)
+//        addSubview(shackle)
         return shackle
     }
     
@@ -125,7 +125,7 @@ public class LockView: UIView {
     private func createLockSpinnerView() -> LockSpinnerView {
         let spinner = LockSpinnerView()
         spinner.isHidden = true
-        addSubview(spinner)
+//        addSubview(spinner)
         return spinner
     }
     
@@ -133,7 +133,7 @@ public class LockView: UIView {
         let disabled = LockDisableView()
         disabled.backgroundColor = UIColor.clear
         disabled.isHidden = !isEnabled
-        addSubview(disabled)
+//        addSubview(disabled)
         return disabled
     }()
     
@@ -162,6 +162,16 @@ public class LockView: UIView {
     
     public override func layoutSubviews() {
         super.layoutSubviews()
+        
+        if !lockShackleView.isDescendant(of: self) {
+            addSubview(lockShackleView)
+        }
+        if !lockDisabledView.isDescendant(of: self) {
+            addSubview(lockDisabledView)
+        }
+        if !lockSpinnerView.isDescendant(of: self) {
+            addSubview(lockSpinnerView)
+        }
         
         // Find the largest size that will fit within the bounds given the aspect ratio.
         var lockViewSize: CGSize
