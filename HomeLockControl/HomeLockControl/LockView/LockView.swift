@@ -75,7 +75,8 @@ public class LockView: UIView {
     private var currentLockColor = UIColor.black {
         didSet {
             if currentLockColor != oldValue {
-                setNeedsDisplay()
+                lockBodyView.lockColor = currentLockColor
+                lockBodyView.setNeedsDisplay()
                 lockShackleView.lockColor = currentLockColor
                 lockShackleView.setNeedsDisplay()
             }
@@ -173,13 +174,4 @@ public class LockView: UIView {
         lockSpinnerView.frame = spinnerRect
     }
     
-//    public override func draw(_ rect: CGRect) {
-//        let path = UIBezierPath()
-//        currentLockColor.setFill()
-//        path.lineWidth = 1.0
-//
-//        // Draw the lock body.
-//        let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: lockBodyOrigin, size: lockBodySize), cornerRadius: 3.0)
-//        lockBodyPath.fill()
-//    }
 }
