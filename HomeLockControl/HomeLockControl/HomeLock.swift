@@ -11,8 +11,6 @@ import Foundation
 public class HomeLock {
     
     public var address = ""
-    public var serverAddress = ""
-    public var serverPort = ""
     
     public init() {
         

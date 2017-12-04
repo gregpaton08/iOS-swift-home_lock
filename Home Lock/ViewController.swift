@@ -18,28 +18,32 @@ class ViewController: UIViewController, LockViewDelegate {
     /// Load user settings from UserDefaults.
     private func loadSettings() -> Bool {
         if let address = HLSettings.getSetting(.address) as? String {
-            homeLock.serverAddress = address
+            homeLock.address = address
             return true
         }
         return false
     }
     
     @IBAction func pressSettingsButton(_ sender: UIButton) {
-        let alert = UIAlertController(title: "Lock Address", message: "Enter the address of the home lock", preferredStyle: .alert)
-        alert.addTextField(configurationHandler: nil)
+        showSettingsAlert()
+    }
+    
+    private func showSettingsAlert() {
+        let settingsAlert = UIAlertController(title: "Lock Address", message: "Enter the address of the home lock", preferredStyle: .alert)
+        settingsAlert.addTextField(configurationHandler: nil)
         if let address = HLSettings.getSetting(.address) as? String {
-            alert.textFields?.first!.text = address
+            settingsAlert.textFields?.first!.text = address
         }
-        let okayAction = UIAlertAction(title: "Okay", style: .default) { [weak alert] action in
-            let address = alert?.textFields?.first?.text ?? ""
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { [weak settingsAlert] action in
+            let address = settingsAlert?.textFields?.first?.text ?? ""
             HLSettings.setSetting(address, forKey: .address)
             self.homeLock.address = address
             self.refreshStatus()
         }
-        alert.addAction(okayAction)
+        settingsAlert.addAction(okayAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
-        alert.addAction(cancelAction)
-        self.present(alert, animated: true, completion: nil)
+        settingsAlert.addAction(cancelAction)
+        self.present(settingsAlert, animated: true, completion: nil)
     }
     
     /// Refresh the lock status.
@@ -53,10 +57,10 @@ class ViewController: UIViewController, LockViewDelegate {
                     self.lockView.isLocked = status!
                 } else {
                     self.lockView.isEnabled = false
-//                    let alertController = UIAlertController(title: "Error", message: "Could not connect to server", preferredStyle: .alert)
-//                    let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
-//                    alertController.addAction(cancelAction)
-//                    self.present(alertController, animated: true, completion: nil)
+                    let alertController = UIAlertController(title: "Could not reach server", message: "Please double check your settings.", preferredStyle: .alert)
+                    let cancelAction = UIAlertAction(title: "Okay", style: .cancel, handler: nil)
+                    alertController.addAction(cancelAction)
+                    self.present(alertController, animated: true, completion: nil)
                 }
             }
         }
@@ -79,7 +83,7 @@ class ViewController: UIViewController, LockViewDelegate {
         
         // If the settings fail to load then segue to the settings page.
         if !loadSettings() {
-//            performSegue(withIdentifier: "showSettings", sender: self)
+            showSettingsAlert()
         }
         
         refreshStatus()
