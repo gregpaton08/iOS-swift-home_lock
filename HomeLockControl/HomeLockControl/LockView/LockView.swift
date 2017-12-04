@@ -151,12 +151,6 @@ public class LockView: UIView {
     
     // MARK:- View functions
     
-    private func add(newSubview: UIView) {
-        if !newSubview.isDescendant(of: self) {
-            addSubview(newSubview)
-        }
-    }
-    
     public override func layoutSubviews() {
         super.layoutSubviews()
         
