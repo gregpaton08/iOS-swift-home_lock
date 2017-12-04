@@ -79,7 +79,7 @@ public class LockView: UIView {
                 setNeedsDisplay()
                 lockShackleView.lockColor = currentLockColor
                 lockShackleView.setNeedsDisplay()
-                lockSpinnerView.backgroundColor = currentLockColor
+//                lockSpinnerView.backgroundColor = currentLockColor
             }
         }
     }
@@ -125,6 +125,7 @@ public class LockView: UIView {
     private func createLockSpinnerView() -> LockSpinnerView {
         let spinner = LockSpinnerView()
         spinner.isHidden = true
+        spinner.backgroundColor = UIColor.clear
 //        addSubview(spinner)
         return spinner
     }
