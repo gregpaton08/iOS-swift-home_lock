@@ -63,23 +63,8 @@ public class LockView: UIView {
     
     public var isSpinning = false {
         didSet {
-            if isSpinning {
-                rotateSpinView()
-            }
+            lockSpinnerView.isSpinning = isSpinning
         }
-    }
-    
-    private func rotateSpinView() {
-        lockSpinnerView.isHidden = false
-        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveLinear], animations: {
-            self.lockSpinnerView.transform = self.lockSpinnerView.transform.rotated(by: CGFloat.pi)
-        }, completion: { finished in
-            if finished && self.isSpinning {
-                self.rotateSpinView()
-            } else if finished {
-                self.lockSpinnerView.isHidden = true
-            }
-        })
     }
     
     private var currentLockColor = UIColor.black {

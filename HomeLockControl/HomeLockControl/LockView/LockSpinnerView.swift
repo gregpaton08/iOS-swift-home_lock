@@ -31,6 +31,27 @@ class LockSpinnerView: UIView {
     
     var spinnerColor = UIColor.white
     
+    var isSpinning = false {
+        didSet {
+            if isSpinning {
+                rotate()
+            }
+        }
+    }
+    
+    private func rotate() {
+        isHidden = false
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: [.curveLinear], animations: {
+            self.transform = self.transform.rotated(by: CGFloat.pi)
+        }, completion: { finished in
+            if finished && self.isSpinning {
+                self.rotate()
+            } else if finished {
+                self.isHidden = true
+            }
+        })
+    }
+    
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
         path.lineWidth = 2.0
