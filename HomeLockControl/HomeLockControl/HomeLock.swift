@@ -10,6 +10,7 @@ import Foundation
 
 public class HomeLock {
     
+    public var address = ""
     public var serverAddress = ""
     public var serverPort = ""
     
@@ -35,7 +36,7 @@ public class HomeLock {
     private var lockStatusGetDataTask: URLSessionDataTask?
     
     private func getLockStatusUrl() -> URL? {
-        return URL(string: "http://" + serverAddress + ":" + serverPort + "/api/v1/lock_status")
+        return URL(string: "http://" + address + "/api/v1/lock_status")
     }
     
     public func getStatus(_ callbackFunction: @escaping (Bool?, Error?) -> Void) {

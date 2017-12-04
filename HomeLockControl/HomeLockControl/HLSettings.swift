@@ -41,13 +41,13 @@ public class HLSettings {
     
     public class func setSetting(_ setting: Any?, forKey key: SettingKeys) -> Bool {
         if let settingString = setting as? String {
-            if validator[key]!(settingString) {
+//            if validator[key]!(settingString) {
                 if defaults != nil {
                     defaults!.set(settingString, forKey: key.rawValue)
                     defaults!.synchronize()
                     return true
                 }
-            }
+//            }
         }
         return false
     }

@@ -28,7 +28,15 @@ class ViewController: UIViewController, LockViewDelegate {
     @IBAction func pressSettingsButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "Lock Address", message: "Enter the address of the home lock", preferredStyle: .alert)
         alert.addTextField(configurationHandler: nil)
-        let okayAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        if let address = HLSettings.getSetting(.address) as? String {
+            alert.textFields?.first!.text = address
+        }
+        let okayAction = UIAlertAction(title: "Okay", style: .default) { [weak alert] action in
+            let address = alert?.textFields?.first?.text ?? ""
+            HLSettings.setSetting(address, forKey: .address)
+            self.homeLock.address = address
+            self.refreshStatus()
+        }
         alert.addAction(okayAction)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
