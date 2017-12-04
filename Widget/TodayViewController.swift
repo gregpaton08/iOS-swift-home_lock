@@ -30,10 +30,10 @@ class TodayViewController: UIViewController, NCWidgetProviding, LockViewDelegate
             DispatchQueue.main.async {
                 self.lockView.isSpinning = false
                 if let lockStatus = status {
-//                    self.lockView.isEnabled = true
+                    self.lockView.isEnabled = true
                     self.lockView.isLocked = lockStatus
                 } else {
-//                    self.lockView.isEnabled = false
+                    self.lockView.isEnabled = false
                 }
             }
         }
@@ -57,9 +57,7 @@ class TodayViewController: UIViewController, NCWidgetProviding, LockViewDelegate
         } catch {
             print("Could not start reachability notifier...")
         }
-        
-//        lockView.isEnabled = false
-        
+                
         if let address = HLSettings.getSetting(.address) as? String {
             homeLock.address = address
         }
