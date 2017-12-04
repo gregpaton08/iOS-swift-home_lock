@@ -9,13 +9,21 @@
 import UIKit
 
 class LockBodyView: UIView {
+    
+    // MARK: API
+    
+    public var lockColor = UIColor.black
+    
+    // MARK: - Draw
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
     override func draw(_ rect: CGRect) {
-        // Drawing code
+        let path = UIBezierPath()
+        lockColor.setFill()
+        path.lineWidth = 1.0
+
+        // Draw the lock body.
+        let lockBodyPath = UIBezierPath(roundedRect: CGRect(origin: self.bounds.origin, size: self.bounds.size), cornerRadius: 3.0)
+        lockBodyPath.fill()
     }
-    */
 
 }

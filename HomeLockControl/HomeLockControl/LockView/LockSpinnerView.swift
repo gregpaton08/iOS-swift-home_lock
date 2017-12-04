@@ -72,7 +72,7 @@ class LockSpinnerView: UIView {
         })
     }
     
-    // MARK:- Draw
+    // MARK: - Draw
     
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()

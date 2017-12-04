@@ -106,7 +106,7 @@ public class LockView: UIView {
         }
     }
     
-    // MARK:- Subview configuration
+    // MARK: - Subview configuration
     
     private var lockShackleView = LockShackleView()
     
@@ -114,7 +114,7 @@ public class LockView: UIView {
     
     private var lockDisabledView = LockDisableView()
     
-    // MARK:- Geometry
+    // MARK: - Geometry
     
     private let lockViewAspectRatio = CGSize(width: 16.0, height: 10.0)
     private var lockViewRect = CGRect()
