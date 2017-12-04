@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		372A47BC1FD5BA2500C22651 /* LockDisableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372A47BB1FD5BA2500C22651 /* LockDisableView.swift */; };
 		372C902B1FBA9161004C5E0F /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902A1FBA9161004C5E0F /* LockView.swift */; };
 		372C902D1FBA9170004C5E0F /* LockShackleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902C1FBA9170004C5E0F /* LockShackleView.swift */; };
 		372C902F1FBA917A004C5E0F /* LockSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		372A47BB1FD5BA2500C22651 /* LockDisableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockDisableView.swift; sourceTree = "<group>"; };
 		372C902A1FBA9161004C5E0F /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
 		372C902C1FBA9170004C5E0F /* LockShackleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockShackleView.swift; sourceTree = "<group>"; };
 		372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSpinnerView.swift; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 				372C902A1FBA9161004C5E0F /* LockView.swift */,
 				372C902C1FBA9170004C5E0F /* LockShackleView.swift */,
 				372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */,
+				372A47BB1FD5BA2500C22651 /* LockDisableView.swift */,
 			);
 			path = LockView;
 			sourceTree = "<group>";
@@ -160,6 +163,7 @@
 				3760302E1F9280C0003C91DB /* HomeLock.swift in Sources */,
 				372C902F1FBA917A004C5E0F /* LockSpinnerView.swift in Sources */,
 				372C902B1FBA9161004C5E0F /* LockView.swift in Sources */,
+				372A47BC1FD5BA2500C22651 /* LockDisableView.swift in Sources */,
 				372C902D1FBA9170004C5E0F /* LockShackleView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
