@@ -34,6 +34,7 @@ public class LockView: UIView {
     public var isEnabled = true {
         didSet {
             currentLockColor = isEnabled ? lockColor : lockColorDisabled
+            lockDisabledView.isHidden = isEnabled
         }
     }
     
@@ -130,7 +131,8 @@ public class LockView: UIView {
     
     private lazy var lockDisabledView: LockDisableView = {
         let disabled = LockDisableView()
-        disabled.backgroundColor = UIColor.gray
+        disabled.backgroundColor = UIColor.clear
+        disabled.isHidden = !isEnabled
         addSubview(disabled)
         return disabled
     }()
@@ -176,14 +178,14 @@ public class LockView: UIView {
         lockShackleView.frame.origin.y = lockViewRect.origin.y
         lockShackleView.frame.size = lockViewRect.size
         
+        lockDisabledView.frame.origin = lockBodyOrigin
+        lockDisabledView.frame.size = lockBodySize
+        
         var spinnerRect = CGRect.zero
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         spinnerRect.origin = CGPoint(x: center.x - pointsFrom(units: 1), y: center.y + pointsFrom(units: 1))
         spinnerRect.size = CGSize(width: pointsFrom(units: 2), height: pointsFrom(units: 2))
         lockSpinnerView.frame = spinnerRect
-        
-        lockDisabledView.frame.origin = lockBodyOrigin
-        lockDisabledView.frame.size = lockBodySize
     }
     
     public override func draw(_ rect: CGRect) {

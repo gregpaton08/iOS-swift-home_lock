@@ -9,10 +9,13 @@
 import UIKit
 
 class LockDisableView: UIView {
+    
+    public var crossColor = UIColor.black
 
     override func draw(_ rect: CGRect) {
-        UIColor.green.setFill()
+        crossColor.setFill()
         
+        // Draw a cross in center of lock body.
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
         let minimumDimension = min(self.bounds.width, self.bounds.height)
         let barSize = CGSize(width: minimumDimension, height: minimumDimension / 6)
