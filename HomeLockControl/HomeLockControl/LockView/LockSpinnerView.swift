@@ -35,6 +35,8 @@ class LockSpinnerView: UIView {
         didSet {
             if isSpinning {
                 rotate()
+            } else {
+                isHidden = true
             }
         }
     }
