@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		372A47BC1FD5BA2500C22651 /* LockDisableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372A47BB1FD5BA2500C22651 /* LockDisableView.swift */; };
+		372A47BE1FD5D33000C22651 /* LockBodyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372A47BD1FD5D33000C22651 /* LockBodyView.swift */; };
 		372C902B1FBA9161004C5E0F /* LockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902A1FBA9161004C5E0F /* LockView.swift */; };
 		372C902D1FBA9170004C5E0F /* LockShackleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902C1FBA9170004C5E0F /* LockShackleView.swift */; };
 		372C902F1FBA917A004C5E0F /* LockSpinnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */; };
@@ -18,6 +19,7 @@
 
 /* Begin PBXFileReference section */
 		372A47BB1FD5BA2500C22651 /* LockDisableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockDisableView.swift; sourceTree = "<group>"; };
+		372A47BD1FD5D33000C22651 /* LockBodyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockBodyView.swift; sourceTree = "<group>"; };
 		372C902A1FBA9161004C5E0F /* LockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockView.swift; sourceTree = "<group>"; };
 		372C902C1FBA9170004C5E0F /* LockShackleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockShackleView.swift; sourceTree = "<group>"; };
 		372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockSpinnerView.swift; sourceTree = "<group>"; };
@@ -43,6 +45,7 @@
 			isa = PBXGroup;
 			children = (
 				372C902A1FBA9161004C5E0F /* LockView.swift */,
+				372A47BD1FD5D33000C22651 /* LockBodyView.swift */,
 				372C902C1FBA9170004C5E0F /* LockShackleView.swift */,
 				372C902E1FBA917A004C5E0F /* LockSpinnerView.swift */,
 				372A47BB1FD5BA2500C22651 /* LockDisableView.swift */,
@@ -159,6 +162,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				372A47BE1FD5D33000C22651 /* LockBodyView.swift in Sources */,
 				376030531F92A0C0003C91DB /* HLSettings.swift in Sources */,
 				3760302E1F9280C0003C91DB /* HomeLock.swift in Sources */,
 				372C902F1FBA917A004C5E0F /* LockSpinnerView.swift in Sources */,
