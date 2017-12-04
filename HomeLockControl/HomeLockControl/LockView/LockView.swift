@@ -61,9 +61,12 @@ public class LockView: UIView {
         }
     }
     
-    public var isSpinning = false {
-        didSet {
-            lockSpinnerView.isSpinning = isSpinning
+    public var isSpinning: Bool {
+        get {
+            return lockSpinnerView.isSpinning
+        }
+        set {
+            lockSpinnerView.isSpinning = newValue
         }
     }
     
