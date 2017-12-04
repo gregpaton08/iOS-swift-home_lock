@@ -118,12 +118,7 @@ public class LockView: UIView {
         return shackle
     }()
     
-    private lazy var lockSpinnerView: LockSpinnerView = {
-        let spinner = LockSpinnerView()
-        spinner.isHidden = true
-        spinner.backgroundColor = UIColor.clear
-        return spinner
-    }()
+    private var lockSpinnerView = LockSpinnerView()
     
     private var lockDisabledView = LockDisableView()
     

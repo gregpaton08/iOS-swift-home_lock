@@ -10,6 +10,25 @@ import UIKit
 
 class LockSpinnerView: UIView {
     
+    // Initializers
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setup()
+    }
+    
+    public func setup() {
+        isHidden = true
+        backgroundColor = UIColor.clear
+    }
+    
+    // MARK: - API
+    
     var spinnerColor = UIColor.white
     
     override func draw(_ rect: CGRect) {
