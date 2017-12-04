@@ -29,9 +29,27 @@ class LockSpinnerView: UIView {
     
     // MARK: - API
     
-    var spinnerColor = UIColor.white
+    public var spinnerColor = UIColor.white
     
-    var isSpinning = false {
+    public var lineWidth: CGFloat {
+        get {
+            return lineWidthScale
+        }
+        set {
+            lineWidthScale = newValue
+        }
+    }
+    
+    private var lineWidthScale: CGFloat = 2.0
+    
+    private var _lineWidth: CGFloat {
+        get {
+            // Scale the line width to the height of the view so it look proportionate for all view sizes.
+            return self.bounds.height * lineWidthScale * 0.02
+        }
+    }
+    
+    public var isSpinning = false {
         didSet {
             if isSpinning {
                 rotate()
@@ -54,9 +72,11 @@ class LockSpinnerView: UIView {
         })
     }
     
+    // MARK:- Draw
+    
     override func draw(_ rect: CGRect) {
         let path = UIBezierPath()
-        path.lineWidth = 2.0
+        path.lineWidth = _lineWidth
         spinnerColor.setStroke()
         
         let center = CGPoint(x: self.bounds.width / 2, y: self.bounds.height / 2)
