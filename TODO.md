@@ -2,6 +2,7 @@
 
 ## Tasks  
 * create gear icon for settings button
+* use reachability framework (cocoapods?) so that it can be accessed from widget and from the app
 
 ## Completed Tasks  
 * create framework for common code (HomeLock, requests, etc.)
